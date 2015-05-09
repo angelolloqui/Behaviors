@@ -10,7 +10,8 @@ import Foundation
 import ObjectiveC
 import UIKit
 
-class Behavior : UIControl {
+@objc
+public class Behavior : UIControl {
     @IBOutlet weak var owner: AnyObject? {
         willSet (v) {
             if owner != nil {
@@ -24,6 +25,14 @@ class Behavior : UIControl {
         }        
     }
 
+    init() {
+        super.init(frame: CGRectZero)
+    }
+
+    required public init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     private func bindLifetimeToObject(object: AnyObject) {
         let pointer = unsafeAddressOf(self)
         objc_setAssociatedObject(object, pointer, self, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
@@ -35,3 +44,5 @@ class Behavior : UIControl {
     }
 
 }
+
+

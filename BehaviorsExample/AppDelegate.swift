@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  ExampleProject
+//  BehaviorsExample
 //
-//  Created by Angel Garcia on 09/04/15.
+//  Created by Angel Garcia on 09/05/15.
 //  Copyright (c) 2015 angelolloqui.com. All rights reserved.
 //
 

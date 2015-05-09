@@ -25,10 +25,13 @@ This is the list of current and posible future behaviors that will be implemente
 	
 - Forms
 	- Autoscrolling on textfield focus: TODO
+    - Focus on next control: TODO
+    - Textfield effects (selected, required, error...): TODO
 	- Email validator: TODO
 	- Name validator: TODO
 	- Phone validator: TODO
 	- Button enable: TODO
+
 
 - Others
 	- Scroll offset listener: TODO

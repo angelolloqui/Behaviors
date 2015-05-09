@@ -9,13 +9,33 @@
 /* Begin PBXBuildFile section */
 		0B8706D91AD6FB38007774D1 /* Behaviors.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8706D81AD6FB38007774D1 /* Behaviors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B8706DF1AD6FB38007774D1 /* Behaviors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8706D31AD6FB38007774D1 /* Behaviors.framework */; };
-		0B8706E61AD6FB38007774D1 /* BehaviorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8706E51AD6FB38007774D1 /* BehaviorsTests.swift */; };
 		0B8706F61AD6FBD8007774D1 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8706F51AD6FBD8007774D1 /* Behavior.swift */; };
 		0B8706F71AD6FBD8007774D1 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8706F51AD6FBD8007774D1 /* Behavior.swift */; };
+		0BAEB45B1AFE0C2C00878322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAEB45A1AFE0C2C00878322 /* AppDelegate.swift */; };
+		0BAEB4621AFE0C2C00878322 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BAEB4601AFE0C2C00878322 /* Main.storyboard */; };
+		0BAEB4641AFE0C2C00878322 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BAEB4631AFE0C2C00878322 /* Images.xcassets */; };
+		0BAEB4671AFE0C2C00878322 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BAEB4651AFE0C2C00878322 /* LaunchScreen.xib */; };
+		0BAEB47C1AFE0CF000878322 /* Behaviors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8706D31AD6FB38007774D1 /* Behaviors.framework */; };
+		0BAEB47D1AFE131D00878322 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8706F51AD6FBD8007774D1 /* Behavior.swift */; };
+		0BAEB47E1AFE131D00878322 /* TextFieldScrollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */; };
+		0BAEB4831AFE138000878322 /* AnimationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAEB4821AFE138000878322 /* AnimationListViewController.swift */; };
+		0BAEB4851AFE13A000878322 /* FormListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAEB4841AFE13A000878322 /* FormListViewController.swift */; };
+		0BAEB4871AFE13B300878322 /* OtherListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAEB4861AFE13B300878322 /* OtherListViewController.swift */; };
+		0BF21E061AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */; };
+		0BF21E071AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */; };
+		0BF21E0B1AF8D28D00E3DF4F /* BehaviorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E091AF8D28D00E3DF4F /* BehaviorsTests.swift */; };
+		0BF21E0D1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E0C1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		0B8706E01AD6FB38007774D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B8706CA1AD6FB38007774D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B8706D21AD6FB38007774D1;
+			remoteInfo = Behaviors;
+		};
+		0BAEB47A1AFE0CE500878322 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0B8706CA1AD6FB38007774D1 /* Project object */;
 			proxyType = 1;
@@ -30,8 +50,20 @@
 		0B8706D81AD6FB38007774D1 /* Behaviors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Behaviors.h; sourceTree = "<group>"; };
 		0B8706DE1AD6FB38007774D1 /* BehaviorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BehaviorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B8706E41AD6FB38007774D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B8706E51AD6FB38007774D1 /* BehaviorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorsTests.swift; sourceTree = "<group>"; };
 		0B8706F51AD6FBD8007774D1 /* Behavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
+		0BAEB4561AFE0C2C00878322 /* BehaviorsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BehaviorsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BAEB4591AFE0C2C00878322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BAEB45A1AFE0C2C00878322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0BAEB4611AFE0C2C00878322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0BAEB4631AFE0C2C00878322 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0BAEB4661AFE0C2C00878322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		0BAEB4821AFE138000878322 /* AnimationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationListViewController.swift; sourceTree = "<group>"; };
+		0BAEB4841AFE13A000878322 /* FormListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormListViewController.swift; sourceTree = "<group>"; };
+		0BAEB4861AFE13B300878322 /* OtherListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherListViewController.swift; sourceTree = "<group>"; };
+		0BF21E041AF8D22E00E3DF4F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldScrollBehavior.swift; sourceTree = "<group>"; };
+		0BF21E091AF8D28D00E3DF4F /* BehaviorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorsTests.swift; sourceTree = "<group>"; };
+		0BF21E0C1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldScrollBehaviorTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +82,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0BAEB4531AFE0C2C00878322 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BAEB47C1AFE0CF000878322 /* Behaviors.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,7 +105,9 @@
 			children = (
 				0B8706D51AD6FB38007774D1 /* Behaviors */,
 				0B8706E21AD6FB38007774D1 /* BehaviorsTests */,
+				0BAEB4571AFE0C2C00878322 /* BehaviorsExample */,
 				0B8706D41AD6FB38007774D1 /* Products */,
+				0BF21E041AF8D22E00E3DF4F /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +116,7 @@
 			children = (
 				0B8706D31AD6FB38007774D1 /* Behaviors.framework */,
 				0B8706DE1AD6FB38007774D1 /* BehaviorsTests.xctest */,
+				0BAEB4561AFE0C2C00878322 /* BehaviorsExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,7 +145,8 @@
 		0B8706E21AD6FB38007774D1 /* BehaviorsTests */ = {
 			isa = PBXGroup;
 			children = (
-				0B8706E51AD6FB38007774D1 /* BehaviorsTests.swift */,
+				0BF21E081AF8D28D00E3DF4F /* Core */,
+				0BF21E0A1AF8D28D00E3DF4F /* Forms */,
 				0B8706E31AD6FB38007774D1 /* Supporting Files */,
 			);
 			path = BehaviorsTests;
@@ -127,6 +171,7 @@
 		0B8706F11AD6FB99007774D1 /* Forms */ = {
 			isa = PBXGroup;
 			children = (
+				0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -136,6 +181,53 @@
 			children = (
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		0BAEB4571AFE0C2C00878322 /* BehaviorsExample */ = {
+			isa = PBXGroup;
+			children = (
+				0BAEB4811AFE138000878322 /* ViewControllers */,
+				0BAEB45A1AFE0C2C00878322 /* AppDelegate.swift */,
+				0BAEB4601AFE0C2C00878322 /* Main.storyboard */,
+				0BAEB4631AFE0C2C00878322 /* Images.xcassets */,
+				0BAEB4651AFE0C2C00878322 /* LaunchScreen.xib */,
+				0BAEB4581AFE0C2C00878322 /* Supporting Files */,
+			);
+			path = BehaviorsExample;
+			sourceTree = "<group>";
+		};
+		0BAEB4581AFE0C2C00878322 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0BAEB4591AFE0C2C00878322 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0BAEB4811AFE138000878322 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0BAEB4821AFE138000878322 /* AnimationListViewController.swift */,
+				0BAEB4841AFE13A000878322 /* FormListViewController.swift */,
+				0BAEB4861AFE13B300878322 /* OtherListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0BF21E081AF8D28D00E3DF4F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0BF21E091AF8D28D00E3DF4F /* BehaviorsTests.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0BF21E0A1AF8D28D00E3DF4F /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				0BF21E0C1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift */,
+			);
+			path = Forms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +280,24 @@
 			productReference = 0B8706DE1AD6FB38007774D1 /* BehaviorsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		0BAEB4551AFE0C2C00878322 /* BehaviorsExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0BAEB4781AFE0C2C00878322 /* Build configuration list for PBXNativeTarget "BehaviorsExample" */;
+			buildPhases = (
+				0BAEB4521AFE0C2C00878322 /* Sources */,
+				0BAEB4531AFE0C2C00878322 /* Frameworks */,
+				0BAEB4541AFE0C2C00878322 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0BAEB47B1AFE0CE500878322 /* PBXTargetDependency */,
+			);
+			name = BehaviorsExample;
+			productName = BehaviorsExample;
+			productReference = 0BAEB4561AFE0C2C00878322 /* BehaviorsExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -203,6 +313,9 @@
 					0B8706DD1AD6FB38007774D1 = {
 						CreatedOnToolsVersion = 6.3;
 					};
+					0BAEB4551AFE0C2C00878322 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 0B8706CD1AD6FB38007774D1 /* Build configuration list for PBXProject "Behaviors" */;
@@ -211,6 +324,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 0B8706C91AD6FB38007774D1;
 			productRefGroup = 0B8706D41AD6FB38007774D1 /* Products */;
@@ -219,6 +333,7 @@
 			targets = (
 				0B8706D21AD6FB38007774D1 /* Behaviors */,
 				0B8706DD1AD6FB38007774D1 /* BehaviorsTests */,
+				0BAEB4551AFE0C2C00878322 /* BehaviorsExample */,
 			);
 		};
 /* End PBXProject section */
@@ -238,6 +353,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0BAEB4541AFE0C2C00878322 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BAEB4621AFE0C2C00878322 /* Main.storyboard in Resources */,
+				0BAEB4671AFE0C2C00878322 /* LaunchScreen.xib in Resources */,
+				0BAEB4641AFE0C2C00878322 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -246,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B8706F61AD6FBD8007774D1 /* Behavior.swift in Sources */,
+				0BF21E061AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,8 +379,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B8706E61AD6FB38007774D1 /* BehaviorsTests.swift in Sources */,
+				0BF21E071AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */,
+				0BF21E0B1AF8D28D00E3DF4F /* BehaviorsTests.swift in Sources */,
+				0BF21E0D1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift in Sources */,
 				0B8706F71AD6FBD8007774D1 /* Behavior.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BAEB4521AFE0C2C00878322 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BAEB4851AFE13A000878322 /* FormListViewController.swift in Sources */,
+				0BAEB4871AFE13B300878322 /* OtherListViewController.swift in Sources */,
+				0BAEB47E1AFE131D00878322 /* TextFieldScrollBehavior.swift in Sources */,
+				0BAEB47D1AFE131D00878322 /* Behavior.swift in Sources */,
+				0BAEB45B1AFE0C2C00878322 /* AppDelegate.swift in Sources */,
+				0BAEB4831AFE138000878322 /* AnimationListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +407,31 @@
 			target = 0B8706D21AD6FB38007774D1 /* Behaviors */;
 			targetProxy = 0B8706E01AD6FB38007774D1 /* PBXContainerItemProxy */;
 		};
+		0BAEB47B1AFE0CE500878322 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0B8706D21AD6FB38007774D1 /* Behaviors */;
+			targetProxy = 0BAEB47A1AFE0CE500878322 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0BAEB4601AFE0C2C00878322 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0BAEB4611AFE0C2C00878322 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0BAEB4651AFE0C2C00878322 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0BAEB4661AFE0C2C00878322 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0B8706E71AD6FB38007774D1 /* Debug */ = {
@@ -404,6 +569,10 @@
 				);
 				INFOPLIST_FILE = BehaviorsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BehaviorsTests/External/ocmock-3.1.2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -417,6 +586,34 @@
 				);
 				INFOPLIST_FILE = BehaviorsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BehaviorsTests/External/ocmock-3.1.2",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0BAEB4741AFE0C2C00878322 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BehaviorsExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0BAEB4751AFE0C2C00878322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BehaviorsExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -447,6 +644,15 @@
 			buildConfigurations = (
 				0B8706ED1AD6FB38007774D1 /* Debug */,
 				0B8706EE1AD6FB38007774D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0BAEB4781AFE0C2C00878322 /* Build configuration list for PBXNativeTarget "BehaviorsExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BAEB4741AFE0C2C00878322 /* Debug */,
+				0BAEB4751AFE0C2C00878322 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
