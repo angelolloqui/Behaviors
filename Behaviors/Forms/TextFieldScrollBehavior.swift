@@ -21,15 +21,29 @@ public class TextFieldScrollBehavior : Behavior {
     var keyboardAnimationCurve = UIViewAnimationCurve.EaseOut
     var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        registerNotifications()
+    convenience init(notificationCenter nc: NSNotificationCenter) {
+        self.init(frame: CGRectZero, notificationCenter: nc)
     }
     
-    init(notificationCenter: NSNotificationCenter) {
-        super.init()
-        self.notificationCenter = notificationCenter
+    override convenience init(frame: CGRect) {
+        self.init(frame: frame, notificationCenter: NSNotificationCenter.defaultCenter())
     }
+    
+    init(frame: CGRect, notificationCenter nc: NSNotificationCenter) {
+        notificationCenter = nc
+        super.init(frame: frame)
+        
+        notificationCenter.addObserver(
+            self,
+            selector: "keyboardWillChange:",
+            name: UIKeyboardWillChangeFrameNotification,
+            object: nil)
+    }
+
+    required public init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     
     //MARK: Public methods
     @IBAction public func autoScroll(animated: Bool = true)  {

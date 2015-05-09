@@ -24,14 +24,6 @@ public class Behavior : UIControl {
             }
         }        
     }
-
-    init() {
-        super.init(frame: CGRectZero)
-    }
-
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     private func bindLifetimeToObject(object: AnyObject) {
         let pointer = unsafeAddressOf(self)

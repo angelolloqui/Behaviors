@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -9,14 +10,15 @@
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="TWB-mL-UU1" kind="relationship" relationship="viewControllers" id="Cqc-uX-h2e"/>
                         <segue destination="nJC-2m-I7a" kind="relationship" relationship="viewControllers" id="v07-gv-pAj"/>
-                        <segue destination="rKZ-my-wfK" kind="relationship" relationship="viewControllers" id="WPR-hD-hqm"/>
                         <segue destination="a0X-Sr-VG6" kind="relationship" relationship="viewControllers" id="IQy-nk-XoW"/>
                     </connections>
                 </tabBarController>
@@ -33,7 +35,7 @@
                         <viewControllerLayoutGuide type="bottom" id="rKn-Kt-NaF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f37-J7-dT4">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -42,6 +44,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="br3-jD-XTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="982" y="871"/>
+        </scene>
+        <!--Form Navigation Controller-->
+        <scene sceneID="mw9-BK-0wU">
+            <objects>
+                <navigationController id="TWB-mL-UU1" userLabel="Form Navigation Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Forms" id="MTf-eb-96Q"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BgN-RR-oxR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rKZ-my-wfK" kind="relationship" relationship="rootViewController" id="Cj5-dX-zEe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3GI-Pw-XoR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="888" y="-6"/>
         </scene>
         <!--Form List View Controller-->
         <scene sceneID="yl8-8R-Dcj">
@@ -52,15 +71,184 @@
                         <viewControllerLayoutGuide type="bottom" id="Ju1-Rt-Gvo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Gbj-Cv-btB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2dM-0k-sWI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BehaviorCell" textLabel="xkY-tN-eay" style="IBUITableViewCellStyleDefault" id="uAU-GQ-aUm">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uAU-GQ-aUm" id="503-D6-yrM">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Behavior title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xkY-tN-eay">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="rKZ-my-wfK" id="ZFY-6A-Nke"/>
+                                    <outlet property="delegate" destination="rKZ-my-wfK" id="T0X-lj-vEh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="2dM-0k-sWI" secondAttribute="bottom" id="0LU-a9-htj"/>
+                            <constraint firstItem="2dM-0k-sWI" firstAttribute="top" secondItem="n25-iq-cxD" secondAttribute="bottom" id="1AX-X6-P0r"/>
+                            <constraint firstItem="2dM-0k-sWI" firstAttribute="top" secondItem="Gbj-Cv-btB" secondAttribute="top" id="3Ph-hx-fLe"/>
+                            <constraint firstAttribute="bottom" secondItem="2dM-0k-sWI" secondAttribute="bottom" id="ba3-ct-LFa"/>
+                            <constraint firstItem="2dM-0k-sWI" firstAttribute="leading" secondItem="Gbj-Cv-btB" secondAttribute="leading" id="fUb-MB-hOI"/>
+                            <constraint firstAttribute="trailing" secondItem="2dM-0k-sWI" secondAttribute="trailing" id="fln-Ql-Cn0"/>
+                            <constraint firstItem="2dM-0k-sWI" firstAttribute="leading" secondItem="Gbj-Cv-btB" secondAttribute="leading" id="qSC-0w-HUG"/>
+                            <constraint firstAttribute="trailing" secondItem="2dM-0k-sWI" secondAttribute="trailing" id="zLz-Bj-ewI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0LU-a9-htj"/>
+                                <exclude reference="1AX-X6-P0r"/>
+                                <exclude reference="qSC-0w-HUG"/>
+                                <exclude reference="zLz-Bj-ewI"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Forms" id="h7n-mY-ZTf"/>
+                    <navigationItem key="navigationItem" id="dbp-rS-1O2"/>
+                    <connections>
+                        <segue destination="wlW-Nw-erB" kind="show" identifier="TextFieldScrollBehavior" id="A0Y-gw-qSF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nzR-E3-AWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="982" y="-6"/>
+            <point key="canvasLocation" x="1278" y="-6"/>
+        </scene>
+        <!--TextFieldScrollBehavior-->
+        <scene sceneID="vHE-K2-aMx">
+            <objects>
+                <viewController title="TextFieldScrollBehavior" id="wlW-Nw-erB" userLabel="TextFieldScrollBehavior" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mfd-zU-yxF"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bnb-cr-xFl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TOh-og-sOg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="687"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O53-m8-FQL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="687"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TextFieldScrollBehavior" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWZ-iv-WPx">
+                                        <rect key="frame" x="14" y="14" width="292" height="20"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9c-yB-w1t">
+                                        <rect key="frame" x="14" y="54" width="292" height="440"/>
+                                        <mutableString key="text">When dealing with forms, it is often the case that the keyboard appears on top of your focused textfield element.
+
+By using TextFieldScrollBehavior, you can force the container scrollview to automatically scroll in such a way that the texfield is visible when focused. 
+
+The behavior listens for keyboard events, and modifies the associated scrollview in the following way:
+
+1. Add Scroll Insets on the bottom to account for the keyboard area covered
+
+2. Modifiy the contentOffset
+
+To use it, just add the behavior and link the owner, scrollView and textfield outlets.</mutableString>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fTF-q0-pp1">
+                                        <rect key="frame" x="14" y="514" width="292" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can also have multiple textfields associated to the same behaviour" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rwy-7T-h1F">
+                                        <rect key="frame" x="14" y="564" width="292" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uuf-Na-tHz">
+                                        <rect key="frame" x="14" y="625" width="292" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="fTF-q0-pp1" firstAttribute="trailing" secondItem="fWZ-iv-WPx" secondAttribute="trailing" id="4yS-FQ-lda"/>
+                                    <constraint firstItem="fTF-q0-pp1" firstAttribute="top" secondItem="E9c-yB-w1t" secondAttribute="top" constant="144" id="577-nM-I7I"/>
+                                    <constraint firstItem="fWZ-iv-WPx" firstAttribute="trailing" secondItem="E9c-yB-w1t" secondAttribute="trailing" id="5mH-ap-6Eq"/>
+                                    <constraint firstItem="fTF-q0-pp1" firstAttribute="top" secondItem="E9c-yB-w1t" secondAttribute="bottom" constant="20" id="6Lq-oZ-xIS"/>
+                                    <constraint firstItem="fWZ-iv-WPx" firstAttribute="leading" secondItem="Rwy-7T-h1F" secondAttribute="leading" id="Bdy-qT-oJi"/>
+                                    <constraint firstAttribute="trailing" secondItem="fWZ-iv-WPx" secondAttribute="trailing" constant="14" id="D6b-vV-XHf"/>
+                                    <constraint firstAttribute="bottom" secondItem="Uuf-Na-tHz" secondAttribute="bottom" constant="20" id="E9D-fv-WCe"/>
+                                    <constraint firstItem="Uuf-Na-tHz" firstAttribute="top" secondItem="Rwy-7T-h1F" secondAttribute="bottom" constant="20" id="LXJ-MI-Wyr"/>
+                                    <constraint firstItem="fTF-q0-pp1" firstAttribute="leading" secondItem="fWZ-iv-WPx" secondAttribute="leading" id="Vdn-pw-HvT"/>
+                                    <constraint firstItem="fWZ-iv-WPx" firstAttribute="leading" secondItem="E9c-yB-w1t" secondAttribute="leading" id="XGA-jr-HrR"/>
+                                    <constraint firstItem="Rwy-7T-h1F" firstAttribute="top" secondItem="fTF-q0-pp1" secondAttribute="bottom" constant="20" id="Z1c-kb-iEm"/>
+                                    <constraint firstItem="fWZ-iv-WPx" firstAttribute="leading" secondItem="O53-m8-FQL" secondAttribute="leading" constant="14" id="ZlW-ew-Jl4"/>
+                                    <constraint firstItem="fWZ-iv-WPx" firstAttribute="top" secondItem="O53-m8-FQL" secondAttribute="top" constant="14" id="cG6-Ae-rxM"/>
+                                    <constraint firstItem="fWZ-iv-WPx" firstAttribute="trailing" secondItem="Rwy-7T-h1F" secondAttribute="trailing" id="qiF-bS-3wf"/>
+                                    <constraint firstItem="Uuf-Na-tHz" firstAttribute="trailing" secondItem="fWZ-iv-WPx" secondAttribute="trailing" id="qpz-Iz-gFF"/>
+                                    <constraint firstItem="E9c-yB-w1t" firstAttribute="top" secondItem="fWZ-iv-WPx" secondAttribute="bottom" constant="20" id="wND-dS-ixb"/>
+                                    <constraint firstItem="Uuf-Na-tHz" firstAttribute="leading" secondItem="fWZ-iv-WPx" secondAttribute="leading" id="yZl-oG-3OQ"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="577-nM-I7I"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O53-m8-FQL" firstAttribute="leading" secondItem="TOh-og-sOg" secondAttribute="leadingMargin" id="1bm-Hh-d6B"/>
+                            <constraint firstAttribute="trailing" secondItem="O53-m8-FQL" secondAttribute="trailing" id="HGd-9Z-yjB"/>
+                            <constraint firstItem="O53-m8-FQL" firstAttribute="trailing" secondItem="TOh-og-sOg" secondAttribute="trailingMargin" id="HuL-KO-DwT"/>
+                            <constraint firstItem="O53-m8-FQL" firstAttribute="leading" secondItem="TOh-og-sOg" secondAttribute="leading" id="JiT-tC-sPa"/>
+                            <constraint firstAttribute="bottom" secondItem="O53-m8-FQL" secondAttribute="bottom" id="XSu-9k-37t"/>
+                            <constraint firstAttribute="width" secondItem="fWZ-iv-WPx" secondAttribute="width" constant="28" id="YDN-SX-5l8"/>
+                            <constraint firstItem="O53-m8-FQL" firstAttribute="top" secondItem="TOh-og-sOg" secondAttribute="top" id="dt0-ep-XDr"/>
+                            <constraint firstItem="O53-m8-FQL" firstAttribute="top" secondItem="mfd-zU-yxF" secondAttribute="bottom" id="rxZ-7w-brU"/>
+                            <constraint firstItem="O53-m8-FQL" firstAttribute="bottom" secondItem="TOh-og-sOg" secondAttribute="bottomMargin" id="xgA-YD-t2v"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1bm-Hh-d6B"/>
+                                <exclude reference="HuL-KO-DwT"/>
+                                <exclude reference="rxZ-7w-brU"/>
+                                <exclude reference="xgA-YD-t2v"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="687"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cvM-gk-Wp9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="LF6-8m-KZ3" customClass="TextFieldScrollBehavior" customModule="BehaviorsExample" customModuleProvider="target">
+                    <connections>
+                        <outlet property="owner" destination="wlW-Nw-erB" id="QaH-id-SK9"/>
+                        <outlet property="scrollView" destination="O53-m8-FQL" id="cvZ-CT-ktT"/>
+                        <outletCollection property="textFields" destination="fTF-q0-pp1" collectionClass="NSMutableArray" id="MKu-qp-5ws"/>
+                        <outletCollection property="textFields" destination="Uuf-Na-tHz" collectionClass="NSMutableArray" id="UZ3-YN-DJA"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="2202" y="0.0"/>
         </scene>
         <!--Other List View Controller-->
         <scene sceneID="RTE-Du-SHv">
@@ -71,7 +259,7 @@
                         <viewControllerLayoutGuide type="bottom" id="IcC-Jq-YBm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KoY-5z-yRC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
