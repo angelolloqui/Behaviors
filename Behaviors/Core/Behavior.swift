@@ -13,16 +13,14 @@ import UIKit
 @objc
 public class Behavior : UIControl {
     @IBOutlet weak var owner: AnyObject? {
-        willSet (v) {
-            if owner != nil {
-                self.releaseLifetimeFromObject(owner!)
+        willSet (new) {
+            if let new: AnyObject = new {
+                self.bindLifetimeToObject(new)
+            }
+            if let owner: AnyObject = owner {
+                self.releaseLifetimeFromObject(owner)
             }
         }
-        didSet (v) {
-            if owner != nil {
-                self.bindLifetimeToObject(owner!)
-            }
-        }        
     }
     
     private func bindLifetimeToObject(object: AnyObject) {

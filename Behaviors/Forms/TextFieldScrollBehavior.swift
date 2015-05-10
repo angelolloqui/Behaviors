@@ -10,7 +10,14 @@ import Foundation
 import UIKit
 
 public class TextFieldScrollBehavior : Behavior {
-    @IBOutlet public var textFields: [UITextField]!
+    @IBOutlet public var textFields: [UITextField]! {
+        willSet {
+            if let textFields = textFields {
+                unregisterTargets(textFields)
+            }
+            registerTargets(newValue)
+        }
+    }
     @IBOutlet public weak var scrollView: UIScrollView!
     @IBInspectable public var insetEnabled: Bool = true
     @IBInspectable public var offsetEnabled: Bool = true
@@ -56,15 +63,29 @@ public class TextFieldScrollBehavior : Behavior {
     }
     
     //MARK: Internal methods
-    func registerNotifications() {
+    private func registerNotifications() {
         notificationCenter.addObserver(
             self,
-            selector: "keyboardWillChange:",
+            selector: Selector("keyboardWillChange:"),
             name: UIKeyboardWillChangeFrameNotification,
             object: nil)
     }
     
-    func keyboardWillChange(notification: NSNotification) {
+    private func registerTargets(textFields: [UITextField]) {
+        for textField in textFields {
+            textField.addTarget(self, action: Selector("editingDidBegin:"), forControlEvents: UIControlEvents.EditingDidBegin)
+            textField.addTarget(self, action: Selector("editingDidEnd:"), forControlEvents: UIControlEvents.EditingDidEnd)
+        }
+    }
+    
+    private func unregisterTargets(textFields: [UITextField]) {
+        for textField in textFields {
+            textField.removeTarget(self, action: Selector("editingDidBegin:"), forControlEvents: UIControlEvents.EditingDidBegin)
+            textField.removeTarget(self, action: Selector("editingDidEnd:"), forControlEvents: UIControlEvents.EditingDidEnd)
+        }
+    }
+    
+    private func keyboardWillChange(notification: NSNotification) {
         if  let userInfo = notification.userInfo {
             
             if let keyboardFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
@@ -82,17 +103,24 @@ public class TextFieldScrollBehavior : Behavior {
     }
     
     
-    func configureScrollInsets(size: CGSize, animated: Bool = true) {
+    private func configureScrollInsets(size: CGSize, animated: Bool = true) {
         if insetEnabled {
             
         }
     }
 
-    func configureScrollOffset(textField: UITextField, animated: Bool = true) {
+    private func configureScrollOffset(textField: UITextField, animated: Bool = true) {
         if offsetEnabled {
             
         }
     }
 
+    private func editingDidBegin(textfield: UITextField) {
+        
+    }
+    
+    private func editingDidEnd(textfield: UITextField) {
+        
+    }
     
 }
