@@ -28,6 +28,7 @@ public class TextFieldScrollBehavior : Behavior {
     var keyboardAnimationCurve = UIViewAnimationCurve.EaseOut
     var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     
+    //MARK: Lifecycle methods
     convenience init(notificationCenter nc: NSNotificationCenter) {
         self.init(frame: CGRectZero, notificationCenter: nc)
     }
@@ -54,10 +55,38 @@ public class TextFieldScrollBehavior : Behavior {
     
     //MARK: Public methods
     @IBAction public func autoScroll(animated: Bool = true)  {
-        for textField in textFields {
-            if textField.isFirstResponder() {
-                self.configureScrollInsets(keyboardFrame.size, animated: animated)
-                self.configureScrollOffset(textField, animated: animated)
+        if let textField = responderTextField() {
+            self.configureScrollInsets(keyboardFrame.size, animated: animated)
+            self.configureScrollOffset(textField, animated: animated)
+        }
+        else {
+            self.configureScrollInsets(CGSizeZero, animated: animated)
+        }
+    }
+    
+    
+    //MARK: Notification and Listener methods
+    @objc private func editingDidBegin(textfield: UITextField) {
+        self.autoScroll(animated: true)
+    }
+    
+    @objc private func editingDidEnd(textfield: UITextField) {
+        self.autoScroll(animated: true)
+    }
+    
+    @objc private func keyboardWillChange(notification: NSNotification) {
+        if  let userInfo = notification.userInfo {
+            
+            if let keyboardFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+                keyboardFrame = keyboardFrameValue.CGRectValue()
+            }
+            
+            if let keyboardAnimDurationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
+                keyboardAnimationDuration = keyboardAnimDurationValue.floatValue
+            }
+            
+            if let keyboardAnimationCurveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
+                keyboardAnimationCurve = UIViewAnimationCurve(rawValue: keyboardAnimationCurveValue.integerValue)!
             }
         }
     }
@@ -85,23 +114,6 @@ public class TextFieldScrollBehavior : Behavior {
         }
     }
     
-    private func keyboardWillChange(notification: NSNotification) {
-        if  let userInfo = notification.userInfo {
-            
-            if let keyboardFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-                keyboardFrame = keyboardFrameValue.CGRectValue()
-            }
-            
-            if let keyboardAnimDurationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
-                keyboardAnimationDuration = keyboardAnimDurationValue.floatValue
-            }
-            
-            if let keyboardAnimationCurveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
-                keyboardAnimationCurve = UIViewAnimationCurve(rawValue: keyboardAnimationCurveValue.integerValue)!
-            }
-        }
-    }
-    
     
     private func configureScrollInsets(size: CGSize, animated: Bool = true) {
         if insetEnabled {
@@ -115,12 +127,8 @@ public class TextFieldScrollBehavior : Behavior {
         }
     }
 
-    private func editingDidBegin(textfield: UITextField) {
-        
-    }
-    
-    private func editingDidEnd(textfield: UITextField) {
-        
+    private func responderTextField() -> UITextField? {
+        return textFields.filter { return $0.isFirstResponder() }.first
     }
     
 }
