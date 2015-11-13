@@ -25,12 +25,12 @@ public class Behavior : UIControl {
     
     private func bindLifetimeToObject(object: AnyObject) {
         let pointer = unsafeAddressOf(self)
-        objc_setAssociatedObject(object, pointer, self, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+        objc_setAssociatedObject(object, pointer, self, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 
     private func releaseLifetimeFromObject(object: AnyObject) {
         let pointer = unsafeAddressOf(self)
-        objc_setAssociatedObject(object, pointer, nil, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+        objc_setAssociatedObject(object, pointer, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 
 }

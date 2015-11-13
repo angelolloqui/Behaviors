@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -79,11 +80,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BehaviorCell" textLabel="xkY-tN-eay" style="IBUITableViewCellStyleDefault" id="uAU-GQ-aUm">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uAU-GQ-aUm" id="503-D6-yrM">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Behavior title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xkY-tN-eay">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -139,11 +143,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Bnb-cr-xFl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TOh-og-sOg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="780"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O53-m8-FQL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="687"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="780"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TextFieldScrollBehavior" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWZ-iv-WPx">
                                         <rect key="frame" x="14" y="14" width="292" height="20"/>
@@ -153,7 +157,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9c-yB-w1t">
                                         <rect key="frame" x="14" y="54" width="292" height="440"/>
-                                        <mutableString key="text">When dealing with forms, it is often the case that the keyboard appears on top of your focused textfield element.
+                                        <string key="text">When dealing with forms, it is often the case that the keyboard appears on top of your focused textfield element.
 
 By using TextFieldScrollBehavior, you can force the container scrollview to automatically scroll in such a way that the texfield is visible when focused. 
 
@@ -163,7 +167,7 @@ The behavior listens for keyboard events, and modifies the associated scrollview
 
 2. Modifiy the contentOffset
 
-To use it, just add the behavior and link the owner, scrollView and textfield outlets.</mutableString>
+To use it, just add the behavior and link the owner, scrollView and textfield outlets.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -173,8 +177,8 @@ To use it, just add the behavior and link the owner, scrollView and textfield ou
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can also have multiple textfields associated to the same behaviour" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rwy-7T-h1F">
-                                        <rect key="frame" x="14" y="564" width="292" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You can also have multiple textfields associated to the same behaviour" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rwy-7T-h1F">
+                                        <rect key="frame" x="14" y="565" width="292" height="41"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -184,24 +188,42 @@ To use it, just add the behavior and link the owner, scrollView and textfield ou
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="And this last textfield does not have the behavior added:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vz-cm-Sny">
+                                        <rect key="frame" x="14" y="681" width="292" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="No behavior here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i1p-JH-0dw">
+                                        <rect key="frame" x="14" y="730" width="292" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="0vz-cm-Sny" firstAttribute="leading" secondItem="fWZ-iv-WPx" secondAttribute="leading" id="3Zw-b0-3tQ"/>
                                     <constraint firstItem="fTF-q0-pp1" firstAttribute="trailing" secondItem="fWZ-iv-WPx" secondAttribute="trailing" id="4yS-FQ-lda"/>
                                     <constraint firstItem="fTF-q0-pp1" firstAttribute="top" secondItem="E9c-yB-w1t" secondAttribute="top" constant="144" id="577-nM-I7I"/>
                                     <constraint firstItem="fWZ-iv-WPx" firstAttribute="trailing" secondItem="E9c-yB-w1t" secondAttribute="trailing" id="5mH-ap-6Eq"/>
                                     <constraint firstItem="fTF-q0-pp1" firstAttribute="top" secondItem="E9c-yB-w1t" secondAttribute="bottom" constant="20" id="6Lq-oZ-xIS"/>
                                     <constraint firstItem="fWZ-iv-WPx" firstAttribute="leading" secondItem="Rwy-7T-h1F" secondAttribute="leading" id="Bdy-qT-oJi"/>
+                                    <constraint firstItem="0vz-cm-Sny" firstAttribute="top" secondItem="Uuf-Na-tHz" secondAttribute="bottom" constant="26" id="CAp-Z6-sc9"/>
                                     <constraint firstAttribute="trailing" secondItem="fWZ-iv-WPx" secondAttribute="trailing" constant="14" id="D6b-vV-XHf"/>
-                                    <constraint firstAttribute="bottom" secondItem="Uuf-Na-tHz" secondAttribute="bottom" constant="20" id="E9D-fv-WCe"/>
+                                    <constraint firstItem="i1p-JH-0dw" firstAttribute="leading" secondItem="fWZ-iv-WPx" secondAttribute="leading" id="GnU-7V-EAC"/>
+                                    <constraint firstItem="i1p-JH-0dw" firstAttribute="top" secondItem="0vz-cm-Sny" secondAttribute="bottom" constant="8" id="K4f-LL-R7l"/>
                                     <constraint firstItem="Uuf-Na-tHz" firstAttribute="top" secondItem="Rwy-7T-h1F" secondAttribute="bottom" constant="20" id="LXJ-MI-Wyr"/>
+                                    <constraint firstItem="i1p-JH-0dw" firstAttribute="trailing" secondItem="fWZ-iv-WPx" secondAttribute="trailing" id="OWb-li-hpB"/>
                                     <constraint firstItem="fTF-q0-pp1" firstAttribute="leading" secondItem="fWZ-iv-WPx" secondAttribute="leading" id="Vdn-pw-HvT"/>
                                     <constraint firstItem="fWZ-iv-WPx" firstAttribute="leading" secondItem="E9c-yB-w1t" secondAttribute="leading" id="XGA-jr-HrR"/>
                                     <constraint firstItem="Rwy-7T-h1F" firstAttribute="top" secondItem="fTF-q0-pp1" secondAttribute="bottom" constant="20" id="Z1c-kb-iEm"/>
                                     <constraint firstItem="fWZ-iv-WPx" firstAttribute="leading" secondItem="O53-m8-FQL" secondAttribute="leading" constant="14" id="ZlW-ew-Jl4"/>
                                     <constraint firstItem="fWZ-iv-WPx" firstAttribute="top" secondItem="O53-m8-FQL" secondAttribute="top" constant="14" id="cG6-Ae-rxM"/>
+                                    <constraint firstAttribute="bottom" secondItem="i1p-JH-0dw" secondAttribute="bottom" constant="20" id="dVK-Ei-3dw"/>
+                                    <constraint firstItem="0vz-cm-Sny" firstAttribute="trailing" secondItem="fWZ-iv-WPx" secondAttribute="trailing" id="lkQ-Gh-bJw"/>
                                     <constraint firstItem="fWZ-iv-WPx" firstAttribute="trailing" secondItem="Rwy-7T-h1F" secondAttribute="trailing" id="qiF-bS-3wf"/>
                                     <constraint firstItem="Uuf-Na-tHz" firstAttribute="trailing" secondItem="fWZ-iv-WPx" secondAttribute="trailing" id="qpz-Iz-gFF"/>
                                     <constraint firstItem="E9c-yB-w1t" firstAttribute="top" secondItem="fWZ-iv-WPx" secondAttribute="bottom" constant="20" id="wND-dS-ixb"/>
+                                    <constraint firstItem="i1p-JH-0dw" firstAttribute="top" secondItem="0vz-cm-Sny" secondAttribute="bottom" constant="8" id="xPy-AL-dCM"/>
                                     <constraint firstItem="Uuf-Na-tHz" firstAttribute="leading" secondItem="fWZ-iv-WPx" secondAttribute="leading" id="yZl-oG-3OQ"/>
                                 </constraints>
                                 <variation key="default">
@@ -236,7 +258,7 @@ To use it, just add the behavior and link the owner, scrollView and textfield ou
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="687"/>
+                    <size key="freeformSize" width="320" height="780"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvM-gk-Wp9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="LF6-8m-KZ3" customClass="TextFieldScrollBehavior" customModule="BehaviorsExample" customModuleProvider="target">
