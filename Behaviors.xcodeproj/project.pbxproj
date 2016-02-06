@@ -11,6 +11,12 @@
 		0B8706DF1AD6FB38007774D1 /* Behaviors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8706D31AD6FB38007774D1 /* Behaviors.framework */; };
 		0B8706F61AD6FBD8007774D1 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8706F51AD6FBD8007774D1 /* Behavior.swift */; };
 		0B8706F71AD6FBD8007774D1 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8706F51AD6FBD8007774D1 /* Behavior.swift */; };
+		0BABF2DA1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BABF2D81C6606B0001B0E84 /* TextFieldResponderBehavior.swift */; };
+		0BABF2DB1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BABF2D81C6606B0001B0E84 /* TextFieldResponderBehavior.swift */; };
+		0BABF2DC1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BABF2D81C6606B0001B0E84 /* TextFieldResponderBehavior.swift */; };
+		0BABF2DD1C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BABF2D91C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift */; };
+		0BABF2DE1C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BABF2D91C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift */; };
+		0BABF2DF1C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BABF2D91C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift */; };
 		0BAEB45B1AFE0C2C00878322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAEB45A1AFE0C2C00878322 /* AppDelegate.swift */; };
 		0BAEB4621AFE0C2C00878322 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BAEB4601AFE0C2C00878322 /* Main.storyboard */; };
 		0BAEB4641AFE0C2C00878322 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BAEB4631AFE0C2C00878322 /* Images.xcassets */; };
@@ -18,9 +24,6 @@
 		0BAEB47C1AFE0CF000878322 /* Behaviors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8706D31AD6FB38007774D1 /* Behaviors.framework */; };
 		0BAEB47D1AFE131D00878322 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8706F51AD6FBD8007774D1 /* Behavior.swift */; };
 		0BAEB47E1AFE131D00878322 /* TextFieldScrollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */; };
-		0BAEB4831AFE138000878322 /* AnimationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAEB4821AFE138000878322 /* AnimationListViewController.swift */; };
-		0BAEB4851AFE13A000878322 /* FormListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAEB4841AFE13A000878322 /* FormListViewController.swift */; };
-		0BAEB4871AFE13B300878322 /* OtherListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAEB4861AFE13B300878322 /* OtherListViewController.swift */; };
 		0BF21E061AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */; };
 		0BF21E071AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */; };
 		0BF21E0B1AF8D28D00E3DF4F /* BehaviorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E091AF8D28D00E3DF4F /* BehaviorsTests.swift */; };
@@ -51,15 +54,14 @@
 		0B8706DE1AD6FB38007774D1 /* BehaviorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BehaviorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B8706E41AD6FB38007774D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B8706F51AD6FBD8007774D1 /* Behavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
+		0BABF2D81C6606B0001B0E84 /* TextFieldResponderBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldResponderBehavior.swift; sourceTree = "<group>"; };
+		0BABF2D91C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPositionKeyboardBehavior.swift; sourceTree = "<group>"; };
 		0BAEB4561AFE0C2C00878322 /* BehaviorsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BehaviorsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BAEB4591AFE0C2C00878322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BAEB45A1AFE0C2C00878322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BAEB4611AFE0C2C00878322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BAEB4631AFE0C2C00878322 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0BAEB4661AFE0C2C00878322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		0BAEB4821AFE138000878322 /* AnimationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationListViewController.swift; sourceTree = "<group>"; };
-		0BAEB4841AFE13A000878322 /* FormListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormListViewController.swift; sourceTree = "<group>"; };
-		0BAEB4861AFE13B300878322 /* OtherListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherListViewController.swift; sourceTree = "<group>"; };
 		0BF21E041AF8D22E00E3DF4F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldScrollBehavior.swift; sourceTree = "<group>"; };
 		0BF21E091AF8D28D00E3DF4F /* BehaviorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorsTests.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				0B8706EF1AD6FB99007774D1 /* Core */,
 				0B2F6E8A1AD9189500D74516 /* Animations */,
 				0B8706F11AD6FB99007774D1 /* Forms */,
+				0BABF2D71C66067D001B0E84 /* Triggers */,
 				0B8706F21AD6FB99007774D1 /* Others */,
 				0B8706D61AD6FB38007774D1 /* Supporting Files */,
 			);
@@ -171,6 +174,8 @@
 		0B8706F11AD6FB99007774D1 /* Forms */ = {
 			isa = PBXGroup;
 			children = (
+				0BABF2D81C6606B0001B0E84 /* TextFieldResponderBehavior.swift */,
+				0BABF2D91C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift */,
 				0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */,
 			);
 			path = Forms;
@@ -181,6 +186,13 @@
 			children = (
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		0BABF2D71C66067D001B0E84 /* Triggers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Triggers;
 			sourceTree = "<group>";
 		};
 		0BAEB4571AFE0C2C00878322 /* BehaviorsExample */ = {
@@ -207,9 +219,6 @@
 		0BAEB4811AFE138000878322 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0BAEB4821AFE138000878322 /* AnimationListViewController.swift */,
-				0BAEB4841AFE13A000878322 /* FormListViewController.swift */,
-				0BAEB4861AFE13B300878322 /* OtherListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -373,6 +382,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B8706F61AD6FBD8007774D1 /* Behavior.swift in Sources */,
+				0BABF2DA1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */,
+				0BABF2DD1C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift in Sources */,
 				0BF21E061AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,9 +392,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BABF2DB1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */,
 				0BF21E071AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */,
 				0BF21E0B1AF8D28D00E3DF4F /* BehaviorsTests.swift in Sources */,
 				0BF21E0D1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift in Sources */,
+				0BABF2DE1C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift in Sources */,
 				0B8706F71AD6FBD8007774D1 /* Behavior.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,12 +405,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BAEB4851AFE13A000878322 /* FormListViewController.swift in Sources */,
-				0BAEB4871AFE13B300878322 /* OtherListViewController.swift in Sources */,
 				0BAEB47E1AFE131D00878322 /* TextFieldScrollBehavior.swift in Sources */,
 				0BAEB47D1AFE131D00878322 /* Behavior.swift in Sources */,
 				0BAEB45B1AFE0C2C00878322 /* AppDelegate.swift in Sources */,
-				0BAEB4831AFE138000878322 /* AnimationListViewController.swift in Sources */,
+				0BABF2DF1C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift in Sources */,
+				0BABF2DC1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

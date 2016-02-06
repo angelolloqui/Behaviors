@@ -1,5 +1,5 @@
 //
-//  KeyboardScrollBehavior.swift
+//  TextFieldScrollBehavior.swift
 //  Behaviors
 //
 //  Created by Angel Garcia on 05/05/15.
@@ -22,7 +22,7 @@ public class TextFieldScrollBehavior : Behavior {
     var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     
     var appliedInsetSize = CGSizeZero
-
+    
     
     //MARK: Lifecycle methods
     convenience init(notificationCenter nc: NSNotificationCenter) {
@@ -38,7 +38,7 @@ public class TextFieldScrollBehavior : Behavior {
         super.init(frame: frame)
         registerNotifications()
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -69,8 +69,35 @@ public class TextFieldScrollBehavior : Behavior {
     }
     
     @objc private func keyboardWillChange(notification: NSNotification) {
+        readNotificationInformation(notification)
+        self.autoScroll(true)
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        readNotificationInformation(notification)
+        self.configureScrollInsets(CGSizeZero, animated: true)
+    }
+    
+    //MARK: Internal methods
+    private func registerNotifications() {
+        notificationCenter.addObserver(
+            self,
+            selector: Selector("keyboardWillChange:"),
+            name: UIKeyboardWillChangeFrameNotification,
+            object: nil)
+        notificationCenter.addObserver(
+            self,
+            selector: Selector("keyboardWillHide:"),
+            name: UIKeyboardWillHideNotification,
+            object: nil)
+    }
+    
+    private func unregisterNotifications() {
+        notificationCenter.removeObserver(self)
+    }
+    
+    private func readNotificationInformation(notification: NSNotification) {
         if  let userInfo = notification.userInfo {
-            
             if let keyboardFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
                 keyboardFrame = keyboardFrameValue.CGRectValue()
             }
@@ -82,23 +109,8 @@ public class TextFieldScrollBehavior : Behavior {
             if let keyboardAnimationCurveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
                 keyboardAnimationCurve = UIViewAnimationCurve(rawValue: keyboardAnimationCurveValue.integerValue)!
             }
-            self.autoScroll(true)
         }
     }
-    
-    //MARK: Internal methods
-    private func registerNotifications() {
-        notificationCenter.addObserver(
-            self,
-            selector: Selector("keyboardWillChange:"),
-            name: UIKeyboardWillChangeFrameNotification,
-            object: nil)
-    }
-    
-    private func unregisterNotifications() {
-        notificationCenter.removeObserver(self, name: UIKeyboardWillChangeFrameNotification, object: nil)
-    }
-
     
     private func configureScrollInsets(size: CGSize, animated: Bool = true) {
         if insetEnabled && scrollView != nil {
@@ -124,29 +136,29 @@ public class TextFieldScrollBehavior : Behavior {
             }
         }
     }
-
+    
     private func configureScrollOffset(textField: UITextField, animated: Bool = true) {
         if offsetEnabled {
             if  let scrollView = self.scrollView,
                 let frameInWindow = scrollView.window?.convertRect(textField.bounds, fromView: textField) {
-                let yBelowKeyboard = CGRectGetMaxY(frameInWindow) - keyboardFrame.origin.y
-                if yBelowKeyboard > 0 {
-                    var bounds = scrollView.bounds
-                    bounds.origin.y += yBelowKeyboard + bottomMargin
-                    if (animated) {
-                        let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
-                        UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
+                    let yBelowKeyboard = CGRectGetMaxY(frameInWindow) - keyboardFrame.origin.y + bottomMargin
+                    if yBelowKeyboard > 0 {
+                        var bounds = scrollView.bounds
+                        bounds.origin.y += yBelowKeyboard
+                        if (animated) {
+                            let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
+                            UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
+                                scrollView.bounds = bounds
+                                }, completion: nil)
+                        }
+                        else {
                             scrollView.bounds = bounds
-                            }, completion: nil)
+                        }
                     }
-                    else {
-                        scrollView.bounds = bounds
-                    }
-                }
             }
         }
     }
-
+    
     private func responderTextField() -> UITextField? {
         return textFields?.filter { return $0.isFirstResponder() }.first
     }
