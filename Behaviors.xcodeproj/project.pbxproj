@@ -24,6 +24,7 @@
 		0BAEB47C1AFE0CF000878322 /* Behaviors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8706D31AD6FB38007774D1 /* Behaviors.framework */; };
 		0BAEB47D1AFE131D00878322 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8706F51AD6FBD8007774D1 /* Behavior.swift */; };
 		0BAEB47E1AFE131D00878322 /* TextFieldScrollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */; };
+		0BD79C1E1C6A54CC002B9B1B /* NavigationHideScrollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD79C1D1C6A54CC002B9B1B /* NavigationHideScrollBehavior.swift */; };
 		0BF21E061AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */; };
 		0BF21E071AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */; };
 		0BF21E0B1AF8D28D00E3DF4F /* BehaviorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E091AF8D28D00E3DF4F /* BehaviorsTests.swift */; };
@@ -62,6 +63,7 @@
 		0BAEB4611AFE0C2C00878322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BAEB4631AFE0C2C00878322 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0BAEB4661AFE0C2C00878322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		0BD79C1D1C6A54CC002B9B1B /* NavigationHideScrollBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHideScrollBehavior.swift; sourceTree = "<group>"; };
 		0BF21E041AF8D22E00E3DF4F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldScrollBehavior.swift; sourceTree = "<group>"; };
 		0BF21E091AF8D28D00E3DF4F /* BehaviorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorsTests.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		0B2F6E8A1AD9189500D74516 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				0BD79C1D1C6A54CC002B9B1B /* NavigationHideScrollBehavior.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			files = (
 				0B8706F61AD6FBD8007774D1 /* Behavior.swift in Sources */,
 				0BABF2DA1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */,
+				0BD79C1E1C6A54CC002B9B1B /* NavigationHideScrollBehavior.swift in Sources */,
 				0BABF2DD1C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift in Sources */,
 				0BF21E061AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */,
 			);
