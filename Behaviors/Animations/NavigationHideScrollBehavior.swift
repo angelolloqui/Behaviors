@@ -25,6 +25,10 @@ public class NavigationHideScrollBehavior : Behavior {
         }
     }
     
+    deinit {
+        scrollView?.removeObserver(self, forKeyPath: "contentOffset")
+    }
+    
     @IBAction public func hideNavigationBar() {
         setNavigationBarHidden(true, animated: true)
     }
@@ -35,7 +39,10 @@ public class NavigationHideScrollBehavior : Behavior {
     
     public func setNavigationBarHidden(hidden: Bool, animated: Bool = true) {
         if let navController = findNavigationController() {
-            navController.setNavigationBarHidden(hidden, animated: animated)
+            if navController.navigationBarHidden != hidden {
+                navController.setNavigationBarHidden(hidden, animated: animated)
+                self.sendActionsForControlEvents(.ValueChanged)
+            }
         }
     }
     
