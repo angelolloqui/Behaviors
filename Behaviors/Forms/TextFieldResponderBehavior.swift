@@ -32,7 +32,7 @@ public class TextFieldResponderBehavior : Behavior {
     @IBOutlet weak var nextTextField: UITextField?
     
     func textFieldShouldReturn() {
-        guard !dismissIfEmpty || textField?.text?.characters.count > 0 else { return }
+        guard enabled && (!dismissIfEmpty || textField?.text?.characters.count > 0) else { return }
         nextTextField?.becomeFirstResponder()
     }
 }

@@ -15,22 +15,26 @@ public class ViewPositionKeyboardBehavior : KeyboardTriggerBehavior {
     
     
     @IBAction public func moveViewAboveKeyboard() {
-        if let viewFrameInWindow = view.window?.convertRect(view.bounds, fromView:view) {
-            let distance = CGRectGetMaxY(viewFrameInWindow) - CGRectGetMinY(keyboardFrame)
-            if distance > 0 {
-                let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
-                UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
-                    self.view.transform = CGAffineTransformMakeTranslation(0, -distance)
-                    }, completion: nil)
+        if enabled {
+            if let viewFrameInWindow = view.window?.convertRect(view.bounds, fromView:view) {
+                let distance = CGRectGetMaxY(viewFrameInWindow) - CGRectGetMinY(keyboardFrame)
+                if distance > 0 {
+                    let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
+                    UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
+                        self.view.transform = CGAffineTransformMakeTranslation(0, -distance)
+                        }, completion: nil)
+                }
             }
         }
     }
     
     @IBAction public func resetViewPosition() {
-        let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
-        UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
-            self.view.transform = CGAffineTransformIdentity
-            }, completion: nil)
+        if enabled {
+            let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
+            UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
+                self.view.transform = CGAffineTransformIdentity
+                }, completion: nil)
+        }
     }
     
     //MARK: Overwritten methods
