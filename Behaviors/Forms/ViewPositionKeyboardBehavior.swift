@@ -9,107 +9,39 @@
 import Foundation
 import UIKit
 
-public class ViewPositionKeyboardBehavior : Behavior {
+public class ViewPositionKeyboardBehavior : KeyboardTriggerBehavior {
     
-//    @IBOutlet public weak var constraint: NSLayoutConstraint! {
-//        didSet {
-//            originConstraintConstant = constraint.constant
-//        }
-//    }
     @IBOutlet public weak var view: UIView!
-
-//    var originConstraintConstant : CGFloat = 0
-    var keyboardFrame = CGRectZero
-    var keyboardAnimationDuration:NSTimeInterval = 0.25
-    var keyboardAnimationCurve = UIViewAnimationCurve.EaseOut
-    var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
     
     
-    //MARK: Lifecycle methods
-    convenience init(notificationCenter nc: NSNotificationCenter) {
-        self.init(frame: CGRectZero, notificationCenter: nc)
-    }
-    
-    override convenience init(frame: CGRect) {
-        self.init(frame: frame, notificationCenter: NSNotificationCenter.defaultCenter())
-    }
-    
-    init(frame: CGRect, notificationCenter nc: NSNotificationCenter) {
-        notificationCenter = nc
-        super.init(frame: frame)
-        registerNotifications()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    deinit {
-        unregisterNotifications()
-    }
-    
-    func readNotificationInfo(notification: NSNotification) {
-        if  let userInfo = notification.userInfo {
-            
-            if let keyboardFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-                keyboardFrame = keyboardFrameValue.CGRectValue()
-            }
-            
-            if let keyboardAnimDurationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
-                keyboardAnimationDuration = keyboardAnimDurationValue.doubleValue
-            }
-            
-            if let keyboardAnimationCurveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
-                keyboardAnimationCurve = UIViewAnimationCurve(rawValue: keyboardAnimationCurveValue.integerValue)!
-            }
-        }
-    }
-    
-    func keyboardWillChange(notification: NSNotification) {
-        readNotificationInfo(notification)
+    @IBAction public func moveViewAboveKeyboard() {
         if let viewFrameInWindow = view.window?.convertRect(view.bounds, fromView:view) {
-            
             let distance = CGRectGetMaxY(viewFrameInWindow) - CGRectGetMinY(keyboardFrame)
-            
             if distance > 0 {
-//                constraint.constant = originConstraintConstant + distance
                 let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
                 UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
                     self.view.transform = CGAffineTransformMakeTranslation(0, -distance)
-//                    self.view.window?.layoutIfNeeded()
                     }, completion: nil)
             }
         }
     }
     
-    func keyboardWillHideNotification(notification: NSNotification) {
-        readNotificationInfo(notification)
-        
-//        constraint.constant = originConstraintConstant
+    @IBAction public func resetViewPosition() {
         let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
         UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
             self.view.transform = CGAffineTransformIdentity
-//            self.view.window?.layoutIfNeeded()
-        }, completion: nil)
-        
+            }, completion: nil)
     }
     
-    //MARK: Internal methods
-    private func registerNotifications() {
-        notificationCenter.addObserver(self,
-            selector: Selector("keyboardWillChange:"),
-            name: UIKeyboardWillChangeFrameNotification,
-            object: nil)
-        
-        notificationCenter.addObserver(self,
-            selector: Selector("keyboardWillHideNotification:"),
-            name: UIKeyboardWillHideNotification,
-            object: nil
-        )
+    //MARK: Overwritten methods
+    override func keyboardWillChange(notification: NSNotification) {
+        super.keyboardWillChange(notification)
+        moveViewAboveKeyboard()
     }
     
-    private func unregisterNotifications() {
-        notificationCenter.removeObserver(self)
+    override func keyboardWillHide(notification: NSNotification) {
+        super.keyboardWillHide(notification)
+        resetViewPosition()
     }
 }
 
