@@ -397,7 +397,7 @@ To use it, just add the behavior and link the owner, scrollView and textfield ou
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SFV-nt-M52">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="119"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <string key="text">The behavior works by observing changes on the scroll view content offset, and calculating deltas over time. You can configure the required delta in the inspectable properties</string>
+                                                    <string key="text">The behavior uses the scrolling trigger to observe changes on the scroll view content offset, and calculate the deltas. You can configure the required delta in the inspectable properties</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -412,7 +412,7 @@ To use it, just add the behavior and link the owner, scrollView and textfield ou
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3g7-iQ-96n">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Scrolling trigger also allows to subscribe to TouchDragEnter and TouchDragExit to act as appropiated" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3g7-iQ-96n">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="119"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>

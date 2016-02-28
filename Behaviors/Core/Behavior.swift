@@ -32,7 +32,10 @@ public class Behavior : UIControl {
         let pointer = unsafeAddressOf(self)
         objc_setAssociatedObject(object, pointer, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
-
+    
+    public override func nextResponder() -> UIResponder? {
+        return super.nextResponder() ?? self.owner as? UIResponder
+    }
 }
 
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1B22D71C836F0600787FAC /* ScrollingTriggerBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B22D61C836F0600787FAC /* ScrollingTriggerBehavior.swift */; };
+		0B1B22D81C836F0600787FAC /* ScrollingTriggerBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B22D61C836F0600787FAC /* ScrollingTriggerBehavior.swift */; };
 		0B8706D91AD6FB38007774D1 /* Behaviors.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8706D81AD6FB38007774D1 /* Behaviors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B8706DF1AD6FB38007774D1 /* Behaviors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8706D31AD6FB38007774D1 /* Behaviors.framework */; };
 		0B8706F61AD6FBD8007774D1 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8706F51AD6FBD8007774D1 /* Behavior.swift */; };
@@ -49,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B1B22D61C836F0600787FAC /* ScrollingTriggerBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingTriggerBehavior.swift; sourceTree = "<group>"; };
 		0B8706D31AD6FB38007774D1 /* Behaviors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Behaviors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B8706D71AD6FB38007774D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B8706D81AD6FB38007774D1 /* Behaviors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Behaviors.h; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 		0BABF2D71C66067D001B0E84 /* Triggers */ = {
 			isa = PBXGroup;
 			children = (
+				0B1B22D61C836F0600787FAC /* ScrollingTriggerBehavior.swift */,
 			);
 			path = Triggers;
 			sourceTree = "<group>";
@@ -384,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B1B22D71C836F0600787FAC /* ScrollingTriggerBehavior.swift in Sources */,
 				0B8706F61AD6FBD8007774D1 /* Behavior.swift in Sources */,
 				0BABF2DA1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */,
 				0BD79C1E1C6A54CC002B9B1B /* NavigationHideScrollBehavior.swift in Sources */,
@@ -402,6 +407,7 @@
 				0BF21E0D1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift in Sources */,
 				0BABF2DE1C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift in Sources */,
 				0B8706F71AD6FBD8007774D1 /* Behavior.swift in Sources */,
+				0B1B22D81C836F0600787FAC /* ScrollingTriggerBehavior.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
