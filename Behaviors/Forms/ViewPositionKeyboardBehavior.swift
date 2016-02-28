@@ -11,14 +11,14 @@ import UIKit
 
 public class ViewPositionKeyboardBehavior : Behavior {
     
-    @IBOutlet public weak var constraint: NSLayoutConstraint! {
-        didSet {
-            originConstraintConstant = constraint.constant
-        }
-    }
+//    @IBOutlet public weak var constraint: NSLayoutConstraint! {
+//        didSet {
+//            originConstraintConstant = constraint.constant
+//        }
+//    }
     @IBOutlet public weak var view: UIView!
 
-    var originConstraintConstant : CGFloat = 0
+//    var originConstraintConstant : CGFloat = 0
     var keyboardFrame = CGRectZero
     var keyboardAnimationDuration:NSTimeInterval = 0.25
     var keyboardAnimationCurve = UIViewAnimationCurve.EaseOut
@@ -72,10 +72,11 @@ public class ViewPositionKeyboardBehavior : Behavior {
             let distance = CGRectGetMaxY(viewFrameInWindow) - CGRectGetMinY(keyboardFrame)
             
             if distance > 0 {
-                constraint.constant = originConstraintConstant + distance
+//                constraint.constant = originConstraintConstant + distance
                 let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
                 UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
-                    self.view.window?.layoutIfNeeded()
+                    self.view.transform = CGAffineTransformMakeTranslation(0, -distance)
+//                    self.view.window?.layoutIfNeeded()
                     }, completion: nil)
             }
         }
@@ -84,10 +85,11 @@ public class ViewPositionKeyboardBehavior : Behavior {
     func keyboardWillHideNotification(notification: NSNotification) {
         readNotificationInfo(notification)
         
-        constraint.constant = originConstraintConstant
+//        constraint.constant = originConstraintConstant
         let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
         UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
-            self.view.window?.layoutIfNeeded()
+            self.view.transform = CGAffineTransformIdentity
+//            self.view.window?.layoutIfNeeded()
         }, completion: nil)
         
     }

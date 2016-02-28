@@ -734,11 +734,11 @@ The behavior subscribes to EditingDidEndOnExit to automatically select the next 
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwy-yD-auW">
-                                        <rect key="frame" x="14" y="104" width="292" height="314"/>
+                                        <rect key="frame" x="14" y="104" width="292" height="335"/>
                                         <string key="text">When dealing with forms, it is frequent to have a  confirmation button at the bottom. However, when keyboard is shown, the button disappears behind the keyboard.
 By using ViewPositionKeyboardBehavior, your button (or any view) can be moved up to always stay on top of the keyboard.
 
-The behavior requires the view to move and the constraint to alter (the one that pins to the bottom). It subscribes to keyabord events to automatically move it together with the keyabord.</string>
+The behavior subscribes to keyabord events to automatically move the view together with the keyboard. It uses a CGAffineTransform to translate the view, so it is compatible with autolayout and spring&amp;structs</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -812,7 +812,6 @@ The behavior requires the view to move and the constraint to alter (the one that
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qyl-yc-vIt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="Izr-jg-CvL" customClass="ViewPositionKeyboardBehavior" customModule="BehaviorsExample" customModuleProvider="target">
                     <connections>
-                        <outlet property="constraint" destination="zws-Tb-5Hd" id="eSZ-RB-ujA"/>
                         <outlet property="owner" destination="yHh-Fy-eyM" id="PsM-my-x29"/>
                         <outlet property="view" destination="Xd5-lX-mpP" id="TC6-hy-BEw"/>
                     </connections>
