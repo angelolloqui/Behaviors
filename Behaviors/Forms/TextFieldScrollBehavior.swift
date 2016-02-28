@@ -9,43 +9,15 @@
 import Foundation
 import UIKit
 
-public class TextFieldScrollBehavior : Behavior {
+public class TextFieldScrollBehavior : KeyboardTriggerBehavior {
     @IBOutlet public var textFields: [UITextField]?
     @IBOutlet public weak var scrollView: UIScrollView?
     @IBInspectable public var insetEnabled: Bool = true
     @IBInspectable public var offsetEnabled: Bool = true
     @IBInspectable public var bottomMargin: CGFloat = 5
     
-    var keyboardFrame = CGRectZero
-    var keyboardAnimationDuration:NSTimeInterval = 0.25
-    var keyboardAnimationCurve = UIViewAnimationCurve.EaseOut
-    var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
-    
     var appliedInsetSize = CGSizeZero
     
-    
-    //MARK: Lifecycle methods
-    convenience init(notificationCenter nc: NSNotificationCenter) {
-        self.init(frame: CGRectZero, notificationCenter: nc)
-    }
-    
-    override convenience init(frame: CGRect) {
-        self.init(frame: frame, notificationCenter: NSNotificationCenter.defaultCenter())
-    }
-    
-    init(frame: CGRect, notificationCenter nc: NSNotificationCenter) {
-        notificationCenter = nc
-        super.init(frame: frame)
-        registerNotifications()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    deinit {
-        unregisterNotifications()
-    }
     
     //MARK: Public methods
     @IBAction public func autoScroll(animated: Bool = true)  {
@@ -68,52 +40,21 @@ public class TextFieldScrollBehavior : Behavior {
         self.autoScroll(true)
     }
     
-    @objc private func keyboardWillChange(notification: NSNotification) {
-        readNotificationInformation(notification)
+    //MARK: Overwritten methods
+    @objc override func keyboardWillChange(notification: NSNotification) {
+        super.keyboardWillChange(notification)
         self.autoScroll(true)
     }
     
-    @objc private func keyboardWillHide(notification: NSNotification) {
-        readNotificationInformation(notification)
+    @objc override func keyboardWillHide(notification: NSNotification) {
+        super.keyboardWillHide(notification)
         self.configureScrollInsets(CGSizeZero, animated: true)
     }
     
     //MARK: Internal methods
-    private func registerNotifications() {
-        notificationCenter.addObserver(
-            self,
-            selector: Selector("keyboardWillChange:"),
-            name: UIKeyboardWillChangeFrameNotification,
-            object: nil)
-        notificationCenter.addObserver(
-            self,
-            selector: Selector("keyboardWillHide:"),
-            name: UIKeyboardWillHideNotification,
-            object: nil)
-    }
-    
-    private func unregisterNotifications() {
-        notificationCenter.removeObserver(self)
-    }
-    
-    private func readNotificationInformation(notification: NSNotification) {
-        if  let userInfo = notification.userInfo {
-            if let keyboardFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-                keyboardFrame = keyboardFrameValue.CGRectValue()
-            }
-            
-            if let keyboardAnimDurationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
-                keyboardAnimationDuration = keyboardAnimDurationValue.doubleValue
-            }
-            
-            if let keyboardAnimationCurveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
-                keyboardAnimationCurve = UIViewAnimationCurve(rawValue: keyboardAnimationCurveValue.integerValue)!
-            }
-        }
-    }
     
     private func configureScrollInsets(size: CGSize, animated: Bool = true) {
-        if insetEnabled && scrollView != nil {
+        if enabled && insetEnabled && scrollView != nil {
             let scrollView = self.scrollView!
             let deltaY = size.height - appliedInsetSize.height
             if deltaY != 0 {
@@ -138,7 +79,7 @@ public class TextFieldScrollBehavior : Behavior {
     }
     
     private func configureScrollOffset(textField: UITextField, animated: Bool = true) {
-        if offsetEnabled {
+        if enabled && offsetEnabled {
             if  let scrollView = self.scrollView,
                 let frameInWindow = scrollView.window?.convertRect(textField.bounds, fromView: textField) {
                     let yBelowKeyboard = CGRectGetMaxY(frameInWindow) - keyboardFrame.origin.y + bottomMargin
