@@ -3,3 +3,4 @@
 *.xccheckout
 .idea/
 xcuserdata/
+build/
