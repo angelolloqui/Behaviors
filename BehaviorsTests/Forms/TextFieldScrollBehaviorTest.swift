@@ -12,7 +12,7 @@ import XCTest
 class TextFieldScrollBehaviorTest: XCTestCase {
     var window: UIWindow!
     var textFields: [MockTextField]!
-    var scrollView: MockScrollView!
+    var scrollView: UIScrollView!
     var behavior: TextFieldScrollBehavior!
     var notificationCenter: MockNotificationCenter!
 
@@ -22,7 +22,7 @@ class TextFieldScrollBehaviorTest: XCTestCase {
         //Views
         window = UIWindow(frame: CGRect(origin: CGPointZero, size: CGSize(width: 300, height: 500)))
         
-        scrollView = MockScrollView(frame: window.bounds)
+        scrollView = UIScrollView(frame: window.bounds)
         window.addSubview(scrollView)
         
         textFields = [
@@ -134,15 +134,11 @@ class MockTextField : UITextField {
     }
 }
 
-class MockScrollView : UIScrollView {
-    
-}
-
 class MockTextFieldScrollBehavior : TextFieldScrollBehavior {
     var autoScrollCount = 0
     
     override func autoScroll(animated: Bool = true) {
-        autoScrollCount++
+        autoScrollCount = autoScrollCount + 1
         super.autoScroll(animated)
     }
     
