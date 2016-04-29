@@ -10,6 +10,7 @@ import UIKit
 import XCTest
 
 class TextFieldScrollBehaviorTest: XCTestCase {
+    var window: UIWindow!
     var textFields: [MockTextField]!
     var scrollView: MockScrollView!
     var behavior: TextFieldScrollBehavior!
@@ -19,16 +20,17 @@ class TextFieldScrollBehaviorTest: XCTestCase {
         super.setUp()
         
         //Views
-        scrollView = MockScrollView()
+        window = UIWindow(frame: CGRect(origin: CGPointZero, size: CGSize(width: 300, height: 500)))
+        
+        scrollView = MockScrollView(frame: window.bounds)
+        window.addSubview(scrollView)
+        
         textFields = [
-            MockTextField(),
-            MockTextField(),
-            MockTextField()
+            MockTextField(frame: CGRectMake(0, 100, 300, 50)),
+            MockTextField(frame: CGRectMake(0, 250, 300, 50)),
+            MockTextField(frame: CGRectMake(0, 400, 300, 50))
         ]
-        var posY = 0
         for textField in textFields {
-            posY += 200
-            textField.frame = CGRect(x: 0, y: posY, width: 100, height: 50)
             scrollView.addSubview(textField)
         }
         
@@ -45,68 +47,6 @@ class TextFieldScrollBehaviorTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-//    func testBehaviorRegistersTargetBeginAndEndEditingOnTextFields() {
-//        //Check targets
-//        for field in textFields {
-//            let beginTargets = field.actionsForTarget(behavior, forControlEvent: UIControlEvents.EditingDidBegin)
-//            XCTAssert(beginTargets?.count == 1, "Expected 1 target for EditingDidBegin")
-//            let endTargets = field.actionsForTarget(behavior, forControlEvent: UIControlEvents.EditingDidEnd)
-//            XCTAssert(endTargets?.count == 1, "Expected 1 target for EditingDidEnd")
-//        }
-//    }
-    
-
-//    func testBehaviorUpdatesTargetsOnTextFieldChanges() {
-//        let newTextField = MockTextField()
-//        let removedTextFields = [
-//            textFields[0],
-//            textFields[2]
-//        ]
-//        let newTextFields = [
-//            textFields[1],
-//            newTextField
-//        ]
-//        behavior.textFields = newTextFields
-//        
-//        //Check new textfields for registered targets
-//        for field in newTextFields {
-//            let beginTargets = field.actionsForTarget(behavior, forControlEvent: UIControlEvents.EditingDidBegin)
-//            XCTAssert(beginTargets?.count == 1, "Expected 1 target for EditingDidBegin")
-//            let endTargets = field.actionsForTarget(behavior, forControlEvent: UIControlEvents.EditingDidEnd)
-//            XCTAssert(endTargets?.count == 1, "Expected 1 target for EditingDidEnd")
-//        }
-//        
-//        //Check removed textfields for unregistration
-//        for field in removedTextFields {
-//            let beginTargets = field.actionsForTarget(behavior, forControlEvent: UIControlEvents.EditingDidBegin)
-//            XCTAssert(beginTargets == nil, "Expected no target for EditingDidBegin")
-//            let endTargets = field.actionsForTarget(behavior, forControlEvent: UIControlEvents.EditingDidEnd)
-//            XCTAssert(endTargets == nil, "Expected no target for EditingDidEnd")
-//        }
-//    }
-
-
-//    func testTextFieldBeginAndEndEditingFiresScrolling() {
-//        let textField = textFields[1]
-//        let mockBehavior = MockTextFieldScrollBehavior()
-//        mockBehavior.textFields = textFields
-//        mockBehavior.scrollView = scrollView
-//        XCTAssert(mockBehavior.autoScrollCount == 0, "No autoscroll should have been performed yet")
-//        textField.sendActionsForControlEvents(UIControlEvents.EditingDidBegin)
-//        XCTAssert(mockBehavior.autoScrollCount == 1, "Autoscroll should have been performed on DidBegin")
-//        textField.sendActionsForControlEvents(UIControlEvents.EditingDidEnd)
-//        XCTAssert(mockBehavior.autoScrollCount == 2, "Autoscroll should have been performed on DidEnd")
-//    }
-    
-    func testScrollContentInsetSetProperly() {
-        XCTFail("Not implemented")
-    }
-
-    func testScrollContentOffsetSetProperly() {
-        XCTFail("Not implemented")
-    }
-    
     
     func testBehaviourRegistersKeyboardNotificationsForFrameChanges() {
         XCTAssert(notificationCenter.observers.count > 0, "Should have registered observers")
@@ -126,14 +66,64 @@ class TextFieldScrollBehaviorTest: XCTestCase {
     }
     
     func testKeyboardSizeChangeFiresAutoScroll() {
-        let behavior = MockTextFieldScrollBehavior()
+        let behavior = MockTextFieldScrollBehavior(notificationCenter: notificationCenter)
         let count = behavior.autoScrollCount
-        let userInfo = ["test": "value"]
-        NSNotificationCenter.defaultCenter().postNotificationName(UIKeyboardWillChangeFrameNotification, object: nil, userInfo:userInfo)
+        notificationCenter.postNotificationName(UIKeyboardWillChangeFrameNotification, object: nil, userInfo:[:])
         XCTAssert(behavior.autoScrollCount > count, "Should have called autoscroll")
     }
     
     
+    func testScrollContentInsetSetProperlyWhenFirstResponder() {
+        XCTAssert(scrollView.contentInset.bottom == 0)
+        textFields.first?.firstResponder = true
+        behavior.keyboardFrame = CGRectMake(0, 0, 0, 100)
+        behavior.offsetEnabled = false
+        behavior.insetEnabled = true
+        behavior.autoScroll()
+        XCTAssert(behavior.appliedInsetSize.height == 100)
+        XCTAssert(scrollView.contentInset.bottom == 100)
+    }
+
+    
+    func testScrollContentInsetResetWhenNoFirstResponder() {
+        scrollView.contentInset.bottom = 150
+        behavior.appliedInsetSize = CGSize(width: 0, height: 100)
+        behavior.offsetEnabled = false
+        behavior.insetEnabled = true
+        behavior.autoScroll()
+        XCTAssert(scrollView.contentInset.bottom == 50)
+    }
+
+    
+    func testKeyboardHideClearsContentInsetToOriginal() {
+        scrollView.contentInset.bottom = 150
+        behavior.appliedInsetSize = CGSize(width: 0, height: 100)
+        behavior.offsetEnabled = false
+        behavior.insetEnabled = true
+        notificationCenter.postNotificationName(UIKeyboardWillHideNotification, object: nil, userInfo:[:])
+        XCTAssert(scrollView.contentInset.bottom == 50)
+    }
+
+    func testScrollContentOffsetNotChangedWhenFieldVisible() {
+        scrollView.contentOffset = CGPointZero
+        textFields.first?.firstResponder = true
+        behavior.keyboardFrame = CGRectMake(0, 300, 300, 200)
+        behavior.offsetEnabled = true
+        behavior.insetEnabled = false
+        behavior.autoScroll()
+        XCTAssert(scrollView.contentOffset.y == 0)
+    }
+
+    func testScrollContentOffsetSetWhenFieldNotVisible() {
+        scrollView.contentOffset = CGPointZero
+        textFields.last?.firstResponder = true
+        behavior.keyboardFrame = CGRectMake(0, 300, 300, 200)
+        behavior.offsetEnabled = true
+        behavior.insetEnabled = false
+        behavior.bottomMargin = 20
+        behavior.autoScroll()
+        XCTAssert(scrollView.contentOffset.y == 170)
+    }
 }
 
 //MARK: Mock objects
@@ -146,38 +136,6 @@ class MockTextField : UITextField {
 
 class MockScrollView : UIScrollView {
     
-}
-
-class MockNotificationCenter : NSNotificationCenter {
-    struct ObserverInfo : Equatable {
-        weak var observer: AnyObject?
-        let selector: Selector
-        let name: String
-    }
-    
-    var observers = [ObserverInfo]()
-    
-    override func addObserver(observer: AnyObject, selector aSelector: Selector, name aName: String?, object anObject: AnyObject?) {
-        let observerInfo = ObserverInfo(observer: observer, selector: aSelector, name: aName!)
-        observers.append(observerInfo)
-    }
-    
-    override func removeObserver(observer: AnyObject, name aName: String?, object anObject: AnyObject?) {
-        observers = observers.filter({ (elem) -> Bool in
-            elem.name != aName || (elem.observer != nil && elem.observer !== observer)
-        })
-    }
-    
-}
-
-func ==(lhs: MockNotificationCenter.ObserverInfo, rhs: MockNotificationCenter.ObserverInfo) -> Bool {
-    if  let observer1 = lhs.observer as? NSObject,
-        let observer2 = rhs.observer as? NSObject {
-            return observer1 == observer2 &&
-                lhs.selector == rhs.selector &&
-                lhs.name == rhs.name
-    }
-    return false
 }
 
 class MockTextFieldScrollBehavior : TextFieldScrollBehavior {

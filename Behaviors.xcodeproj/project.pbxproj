@@ -39,6 +39,10 @@
 		0BF21E0D1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E0C1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift */; };
 		7826DF181CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826DF171CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift */; };
 		7826DF191CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826DF171CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift */; };
+		7826DF1D1CD3933C00B3CDA0 /* KeyboardTriggerBehaviorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826DF1B1CD3933C00B3CDA0 /* KeyboardTriggerBehaviorTest.swift */; };
+		7826DF1F1CD394D500B3CDA0 /* MockNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826DF1E1CD394D500B3CDA0 /* MockNotificationCenter.swift */; };
+		7826DF201CD394D500B3CDA0 /* MockNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826DF1E1CD394D500B3CDA0 /* MockNotificationCenter.swift */; };
+		7826DF231CD39A5000B3CDA0 /* XCTestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826DF211CD39A5000B3CDA0 /* XCTestExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +85,9 @@
 		0BF21E091AF8D28D00E3DF4F /* BehaviorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorsTests.swift; sourceTree = "<group>"; };
 		0BF21E0C1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldScrollBehaviorTest.swift; sourceTree = "<group>"; };
 		7826DF171CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldValidatorBehavior.swift; sourceTree = "<group>"; };
+		7826DF1B1CD3933C00B3CDA0 /* KeyboardTriggerBehaviorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardTriggerBehaviorTest.swift; sourceTree = "<group>"; };
+		7826DF1E1CD394D500B3CDA0 /* MockNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNotificationCenter.swift; sourceTree = "<group>"; };
+		7826DF211CD39A5000B3CDA0 /* XCTestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				0BF21E081AF8D28D00E3DF4F /* Core */,
+				7826DF1A1CD3932900B3CDA0 /* Triggers */,
 				0BF21E0A1AF8D28D00E3DF4F /* Forms */,
 				0B8706E31AD6FB38007774D1 /* Supporting Files */,
 			);
@@ -175,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				0B8706E41AD6FB38007774D1 /* Info.plist */,
+				7826DF1E1CD394D500B3CDA0 /* MockNotificationCenter.swift */,
+				7826DF211CD39A5000B3CDA0 /* XCTestExtensions.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -256,6 +266,14 @@
 				0BF21E0C1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift */,
 			);
 			path = Forms;
+			sourceTree = "<group>";
+		};
+		7826DF1A1CD3932900B3CDA0 /* Triggers */ = {
+			isa = PBXGroup;
+			children = (
+				7826DF1B1CD3933C00B3CDA0 /* KeyboardTriggerBehaviorTest.swift */,
+			);
+			path = Triggers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B1B22DA1C8373C800787FAC /* KeyboardTriggerBehavior.swift in Sources */,
+				7826DF1F1CD394D500B3CDA0 /* MockNotificationCenter.swift in Sources */,
 				0B1B22D71C836F0600787FAC /* ScrollingTriggerBehavior.swift in Sources */,
 				0B8706F61AD6FBD8007774D1 /* Behavior.swift in Sources */,
 				0BABF2DA1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */,
@@ -416,9 +435,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BABF2DB1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */,
+				7826DF201CD394D500B3CDA0 /* MockNotificationCenter.swift in Sources */,
+				7826DF231CD39A5000B3CDA0 /* XCTestExtensions.swift in Sources */,
 				0B1B22DE1C83767000787FAC /* NavigationHideScrollBehavior.swift in Sources */,
 				7826DF191CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift in Sources */,
 				0BF21E071AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */,
+				7826DF1D1CD3933C00B3CDA0 /* KeyboardTriggerBehaviorTest.swift in Sources */,
 				0BF21E0B1AF8D28D00E3DF4F /* BehaviorsTests.swift in Sources */,
 				0BF21E0D1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift in Sources */,
 				0BABF2DE1C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift in Sources */,
