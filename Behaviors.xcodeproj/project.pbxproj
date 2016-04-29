@@ -37,6 +37,8 @@
 		0BF21E071AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */; };
 		0BF21E0B1AF8D28D00E3DF4F /* BehaviorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E091AF8D28D00E3DF4F /* BehaviorsTests.swift */; };
 		0BF21E0D1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF21E0C1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift */; };
+		7826DF181CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826DF171CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift */; };
+		7826DF191CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826DF171CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,7 @@
 		0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldScrollBehavior.swift; sourceTree = "<group>"; };
 		0BF21E091AF8D28D00E3DF4F /* BehaviorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorsTests.swift; sourceTree = "<group>"; };
 		0BF21E0C1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldScrollBehaviorTest.swift; sourceTree = "<group>"; };
+		7826DF171CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldValidatorBehavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,7 @@
 				0BABF2D81C6606B0001B0E84 /* TextFieldResponderBehavior.swift */,
 				0BABF2D91C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift */,
 				0BF21E051AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift */,
+				7826DF171CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -400,6 +404,7 @@
 				0B1B22D71C836F0600787FAC /* ScrollingTriggerBehavior.swift in Sources */,
 				0B8706F61AD6FBD8007774D1 /* Behavior.swift in Sources */,
 				0BABF2DA1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */,
+				7826DF181CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift in Sources */,
 				0BD79C1E1C6A54CC002B9B1B /* NavigationHideScrollBehavior.swift in Sources */,
 				0BABF2DD1C6606B0001B0E84 /* ViewPositionKeyboardBehavior.swift in Sources */,
 				0BF21E061AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */,
@@ -412,6 +417,7 @@
 			files = (
 				0BABF2DB1C6606B0001B0E84 /* TextFieldResponderBehavior.swift in Sources */,
 				0B1B22DE1C83767000787FAC /* NavigationHideScrollBehavior.swift in Sources */,
+				7826DF191CD38E7100B3CDA0 /* TextFieldValidatorBehavior.swift in Sources */,
 				0BF21E071AF8D26A00E3DF4F /* TextFieldScrollBehavior.swift in Sources */,
 				0BF21E0B1AF8D28D00E3DF4F /* BehaviorsTests.swift in Sources */,
 				0BF21E0D1AF8D2A900E3DF4F /* TextFieldScrollBehaviorTest.swift in Sources */,

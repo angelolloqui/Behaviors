@@ -60,17 +60,17 @@ public class KeyboardTriggerBehavior : Behavior {
     private func registerNotifications() {
         notificationCenter.addObserver(
             self,
-            selector: Selector("keyboardWillShow:"),
+            selector: #selector(KeyboardTriggerBehavior.keyboardWillShow(_:)),
             name: UIKeyboardWillShowNotification,
             object: nil)
         notificationCenter.addObserver(
             self,
-            selector: Selector("keyboardWillChange:"),
+            selector: #selector(KeyboardTriggerBehavior.keyboardWillChange(_:)),
             name: UIKeyboardWillChangeFrameNotification,
             object: nil)
         notificationCenter.addObserver(
             self,
-            selector: Selector("keyboardWillHide:"),
+            selector: #selector(KeyboardTriggerBehavior.keyboardWillHide(_:)),
             name: UIKeyboardWillHideNotification,
             object: nil)
     }

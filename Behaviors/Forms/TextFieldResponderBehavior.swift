@@ -12,19 +12,19 @@ import UIKit
 public class TextFieldResponderBehavior : Behavior {
     
     @IBInspectable public var dismissIfEmpty: Bool = false
-
+    
     @IBOutlet weak var textField: UITextField? {
         willSet {
             textField?.removeTarget(self, action:
-                Selector("textFieldShouldReturn"),
-                forControlEvents: .EditingDidEndOnExit
+                #selector(TextFieldResponderBehavior.textFieldShouldReturn),
+                                    forControlEvents: .EditingDidEndOnExit
             )
         }
         
         didSet {
             textField?.addTarget(self, action:
-                Selector("textFieldShouldReturn"),
-                forControlEvents: .EditingDidEndOnExit
+                #selector(TextFieldResponderBehavior.textFieldShouldReturn),
+                                 forControlEvents: .EditingDidEndOnExit
             )
         }
     }
