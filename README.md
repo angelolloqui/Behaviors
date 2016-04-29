@@ -20,26 +20,27 @@ List of behaviours
 This is the list of current and posible future behaviors that will be implemented.
 
 - Effects
-	- Shake: TODO
-	- Background Parallax: TODO
-	- Pull to expand view: TODO
-	- Table row appear animation: TODO
+	- [ ] Shake: TODO
+	- [ ] Background Parallax: TODO
+	- [ ] Pull to expand view: TODO
+	- [ ] Table row appear animation: TODO
 	
 	
 - Forms
-	- Autoscrolling on textfield focus: TODO
-    - Focus on next control: TODO
-    - Textfield effects (selected, required, error...): TODO
-	- Email validator: TODO
-	- Name validator: TODO
-	- Phone validator: TODO
-	- Button enable: TODO
+	- [x] Autoscrolling on textfield focus
+	- [x] Focus on next control
+	- [x] Move view on top of keyboard
+	- [x] Regex validator
+	- [x] Email validator
+	- [x] Phone validator
+	- [ ] Button enabler: TODO
+	- [ ]Textfield effects (selected, required, error...): TODO
 
 
 - Others
-	- Scroll offset listener: TODO
-	- Delegate multiplexor: TODO
-	- Autolayout view visibility gone: TODO
+	- [x] Scroll offset listener
+	- [ ] Delegate multiplexor: TODO
+	- [ ] Autolayout view visibility gone: TODO
 	
 	
 
