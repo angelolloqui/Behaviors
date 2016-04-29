@@ -1,5 +1,8 @@
-iOS Behaviors
+iOS Behaviors 
 ======
+[![Swift](https://img.shields.io/badge/swift-2.3-green.svg?style=flat)](https://developer.apple.com/swift/)
+[![Build Status](https://travis-ci.org/angelolloqui/Behaviors.svg?branch=develop)](https://travis-ci.org/angelolloqui/Behaviors.svg?branch=develop)
+
 
 This Swift library contains a set of usefulf behaviors implemented to simplify your iOS projects. The concept behind this approach is explored in [objc.ios Issue 13](http://www.objc.io/issue-13/behaviors.html).
 
