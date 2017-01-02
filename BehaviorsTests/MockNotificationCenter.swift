@@ -26,7 +26,7 @@ class MockNotificationCenter : NotificationCenter {
     
     override func removeObserver(_ observer: Any, name aName: NSNotification.Name?, object anObject: Any?) {
         observers = observers.filter({ (elem) -> Bool in
-            (aName != nil && elem.name != String(describing: aName)) || (elem.observer != nil && elem.observer! !== (observer as AnyObject))
+            (aName != nil && elem.name != aName?.rawValue) || (elem.observer != nil && elem.observer! !== (observer as AnyObject))
         })
         super.removeObserver(observer, name: aName, object: anObject)
     }

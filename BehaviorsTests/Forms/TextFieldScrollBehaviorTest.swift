@@ -20,15 +20,15 @@ class TextFieldScrollBehaviorTest: XCTestCase {
         super.setUp()
         
         //Views
-        window = UIWindow(frame: CGRect(origin: CGPointZero, size: CGSize(width: 300, height: 500)))
+        window = UIWindow(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 300, height: 500)))
         
         scrollView = UIScrollView(frame: window.bounds)
         window.addSubview(scrollView)
         
         textFields = [
-            MockTextField(frame: CGRectMake(0, 100, 300, 50)),
-            MockTextField(frame: CGRectMake(0, 250, 300, 50)),
-            MockTextField(frame: CGRectMake(0, 400, 300, 50))
+            MockTextField(frame: CGRect(x: 0, y: 100, width: 300, height: 50)),
+            MockTextField(frame: CGRect(x: 0, y: 250, width: 300, height: 50)),
+            MockTextField(frame: CGRect(x: 0, y: 400, width: 300, height: 50))
         ]
         for textField in textFields {
             scrollView.addSubview(textField)
@@ -51,7 +51,7 @@ class TextFieldScrollBehaviorTest: XCTestCase {
     func testBehaviourRegistersKeyboardNotificationsForFrameChanges() {
         XCTAssert(notificationCenter.observers.count > 0, "Should have registered observers")
         let validObservers = notificationCenter.observers.filter { (info : MockNotificationCenter.ObserverInfo) -> Bool in
-            return info.observer as! Behavior == self.behavior && info.name == UIKeyboardWillChangeFrameNotification
+            return info.observer as! Behavior == self.behavior && info.name == NSNotification.Name.UIKeyboardWillChangeFrame.rawValue
         }
         XCTAssert(validObservers.count > 0, "No observers registered for expected names (UIKeyboardWillChangeFrameNotification)")
     }
@@ -68,7 +68,7 @@ class TextFieldScrollBehaviorTest: XCTestCase {
     func testKeyboardSizeChangeFiresAutoScroll() {
         let behavior = MockTextFieldScrollBehavior(notificationCenter: notificationCenter)
         let count = behavior.autoScrollCount
-        notificationCenter.postNotificationName(UIKeyboardWillChangeFrameNotification, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil, userInfo:[:])
         XCTAssert(behavior.autoScrollCount > count, "Should have called autoscroll")
     }
     
@@ -76,7 +76,7 @@ class TextFieldScrollBehaviorTest: XCTestCase {
     func testScrollContentInsetSetProperlyWhenFirstResponder() {
         XCTAssert(scrollView.contentInset.bottom == 0)
         textFields.first?.firstResponder = true
-        behavior.keyboardFrame = CGRectMake(0, 0, 0, 100)
+        behavior.keyboardFrame = CGRect(x: 0, y: 0, width: 0, height: 100)
         behavior.offsetEnabled = false
         behavior.insetEnabled = true
         behavior.autoScroll()
@@ -100,14 +100,14 @@ class TextFieldScrollBehaviorTest: XCTestCase {
         behavior.appliedInsetSize = CGSize(width: 0, height: 100)
         behavior.offsetEnabled = false
         behavior.insetEnabled = true
-        notificationCenter.postNotificationName(UIKeyboardWillHideNotification, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardWillHide, object: nil, userInfo:[:])
         XCTAssert(scrollView.contentInset.bottom == 50)
     }
 
     func testScrollContentOffsetNotChangedWhenFieldVisible() {
-        scrollView.contentOffset = CGPointZero
+        scrollView.contentOffset = CGPoint.zero
         textFields.first?.firstResponder = true
-        behavior.keyboardFrame = CGRectMake(0, 300, 300, 200)
+        behavior.keyboardFrame = CGRect(x: 0, y: 300, width: 300, height: 200)
         behavior.offsetEnabled = true
         behavior.insetEnabled = false
         behavior.autoScroll()
@@ -115,9 +115,9 @@ class TextFieldScrollBehaviorTest: XCTestCase {
     }
 
     func testScrollContentOffsetSetWhenFieldNotVisible() {
-        scrollView.contentOffset = CGPointZero
+        scrollView.contentOffset = CGPoint.zero
         textFields.last?.firstResponder = true
-        behavior.keyboardFrame = CGRectMake(0, 300, 300, 200)
+        behavior.keyboardFrame = CGRect(x: 0, y: 300, width: 300, height: 200)
         behavior.offsetEnabled = true
         behavior.insetEnabled = false
         behavior.bottomMargin = 20
@@ -129,7 +129,8 @@ class TextFieldScrollBehaviorTest: XCTestCase {
 // MARK: Mock objects
 class MockTextField : UITextField {
     var firstResponder = false
-    override func isFirstResponder() -> Bool {
+    
+    override open var isFirstResponder: Bool {
         return firstResponder
     }
 }
@@ -137,7 +138,7 @@ class MockTextField : UITextField {
 class MockTextFieldScrollBehavior : TextFieldScrollBehavior {
     var autoScrollCount = 0
     
-    override func autoScroll(animated: Bool = true) {
+    override func autoScroll(_ animated: Bool = true) {
         autoScrollCount = autoScrollCount + 1
         super.autoScroll(animated)
     }

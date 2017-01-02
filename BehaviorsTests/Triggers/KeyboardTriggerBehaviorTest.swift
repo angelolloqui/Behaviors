@@ -34,7 +34,7 @@ class KeyboardTriggerBehaviorTest: XCTestCase {
     func testBehaviourRegistersKeyboardNotificationsForFrameChanges() {
         XCTAssert(notificationCenter.observers.count == 3, "Should have registered observers")
         let validObservers = notificationCenter.observers.filter { (info : MockNotificationCenter.ObserverInfo) -> Bool in
-            return info.observer as! Behavior == self.behavior && info.name == UIKeyboardWillChangeFrameNotification
+            return info.observer as! Behavior == self.behavior && info.name == NSNotification.Name.UIKeyboardWillChangeFrame.rawValue
         }
         XCTAssert(validObservers.count > 0, "No observers registered for expected names (UIKeyboardWillChangeFrameNotification)")
     }
@@ -52,15 +52,15 @@ class KeyboardTriggerBehaviorTest: XCTestCase {
         let behavior = MockKeyboardTriggerBehavior(notificationCenter: notificationCenter)
         XCTAssert(behavior.events.count == 0, "Should have no events yet")
         
-        notificationCenter.postNotificationName(UIKeyboardWillShowNotification, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo:[:])
         
         XCTAssert(behavior.events.count == 1, "Should have received an event")
         
-        notificationCenter.postNotificationName(UIKeyboardDidShowNotification, object: nil, userInfo:[:])
-        notificationCenter.postNotificationName(UIKeyboardWillChangeFrameNotification, object: nil, userInfo:[:])
-        notificationCenter.postNotificationName(UIKeyboardWillHideNotification, object: nil, userInfo:[:])
-        notificationCenter.postNotificationName(UIKeyboardDidHideNotification, object: nil, userInfo:[:])
-        XCTAssert(behavior.events.filter { $0 == UIControlEvents.EditingDidBegin }.count == 1, "Should have received no extra events")
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardDidShow, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardWillHide, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardDidHide, object: nil, userInfo:[:])
+        XCTAssert(behavior.events.filter { $0 == UIControlEvents.editingDidBegin }.count == 1, "Should have received no extra events")
     }
     
 
@@ -68,15 +68,15 @@ class KeyboardTriggerBehaviorTest: XCTestCase {
         let behavior = MockKeyboardTriggerBehavior(notificationCenter: notificationCenter)
         XCTAssert(behavior.events.count == 0, "Should have no events yet")
         
-        notificationCenter.postNotificationName(UIKeyboardWillChangeFrameNotification, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil, userInfo:[:])
         
         XCTAssert(behavior.events.count == 1, "Should have received an event")
         
-        notificationCenter.postNotificationName(UIKeyboardWillShowNotification, object: nil, userInfo:[:])
-        notificationCenter.postNotificationName(UIKeyboardDidShowNotification, object: nil, userInfo:[:])
-        notificationCenter.postNotificationName(UIKeyboardWillHideNotification, object: nil, userInfo:[:])
-        notificationCenter.postNotificationName(UIKeyboardDidHideNotification, object: nil, userInfo:[:])
-        XCTAssert(behavior.events.filter { $0 == UIControlEvents.EditingChanged }.count == 1, "Should have received no extra events")
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardDidShow, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardWillHide, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardDidHide, object: nil, userInfo:[:])
+        XCTAssert(behavior.events.filter { $0 == UIControlEvents.editingChanged }.count == 1, "Should have received no extra events")
     }
     
     
@@ -84,15 +84,15 @@ class KeyboardTriggerBehaviorTest: XCTestCase {
         let behavior = MockKeyboardTriggerBehavior(notificationCenter: notificationCenter)
         XCTAssert(behavior.events.count == 0, "Should have no events yet")
         
-        notificationCenter.postNotificationName(UIKeyboardWillHideNotification, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardWillHide, object: nil, userInfo:[:])
         
         XCTAssert(behavior.events.count == 1, "Should have received an event")
         
-        notificationCenter.postNotificationName(UIKeyboardWillShowNotification, object: nil, userInfo:[:])
-        notificationCenter.postNotificationName(UIKeyboardDidShowNotification, object: nil, userInfo:[:])
-        notificationCenter.postNotificationName(UIKeyboardWillChangeFrameNotification, object: nil, userInfo:[:])
-        notificationCenter.postNotificationName(UIKeyboardDidHideNotification, object: nil, userInfo:[:])
-        XCTAssert(behavior.events.filter { $0 == UIControlEvents.EditingDidEnd }.count == 1, "Should have received no extra events")
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardDidShow, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil, userInfo:[:])
+        notificationCenter.post(name: NSNotification.Name.UIKeyboardDidHide, object: nil, userInfo:[:])
+        XCTAssert(behavior.events.filter { $0 == UIControlEvents.editingDidEnd }.count == 1, "Should have received no extra events")
     }
     
     
@@ -101,9 +101,9 @@ class KeyboardTriggerBehaviorTest: XCTestCase {
 class MockKeyboardTriggerBehavior: KeyboardTriggerBehavior {
     var events: [UIControlEvents] = []
     
-    override func sendActionsForControlEvents(controlEvents: UIControlEvents) {
+    override func sendActions(for controlEvents: UIControlEvents) {
         events.append(controlEvents)
-        super.sendActionsForControlEvents(controlEvents)
+        super.sendActions(for: controlEvents)
     }
 }
 
