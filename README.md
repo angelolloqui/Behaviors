@@ -1,6 +1,6 @@
 iOS Behaviors 
 ======
-[![Swift](https://img.shields.io/badge/swift-2.3-green.svg?style=flat)](https://developer.apple.com/swift/)
+[![Swift](https://img.shields.io/badge/swift-3-green.svg?style=flat)](https://developer.apple.com/swift/)
 [![Build Status](https://travis-ci.org/angelolloqui/Behaviors.svg?branch=develop)](https://travis-ci.org/angelolloqui/Behaviors.svg?branch=develop)
 
 
