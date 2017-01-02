@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-open class NavigationHideScrollBehavior : ScrollingTriggerBehavior {
+open class NavigationHideScrollBehavior: ScrollingTriggerBehavior {
     @IBInspectable open var navigationBarEnabled: Bool = true
     @IBInspectable open var tabBarEnabled: Bool = false
 
@@ -19,30 +19,29 @@ open class NavigationHideScrollBehavior : ScrollingTriggerBehavior {
         hideNavigationBar()
         hideTabBar()
     }
-    
+
     @IBAction open override func touchDragExit() {
         super.touchDragExit()
         showNavigationBar()
         showTabBar()
     }
-    
+
     @IBAction open func hideNavigationBar() {
         setNavigationBarHidden(true, animated: true)
     }
-    
+
     @IBAction open func showNavigationBar() {
         setNavigationBarHidden(false, animated: true)
     }
-    
+
     @IBAction open func hideTabBar() {
         setTabBarHidden(true, animated: true)
     }
-    
+
     @IBAction open func showTabBar() {
         setTabBarHidden(false, animated: true)
     }
-    
-    
+
     open func setNavigationBarHidden(_ hidden: Bool, animated: Bool = true) {
         if isEnabled && navigationBarEnabled {
             if let navController = findNavigationController() {
@@ -53,8 +52,7 @@ open class NavigationHideScrollBehavior : ScrollingTriggerBehavior {
             }
         }
     }
-    
-    
+
     open func setTabBarHidden(_ hidden: Bool, animated: Bool = true) {
         if isEnabled && tabBarEnabled {
             if let tabController = findTabBarController() {
@@ -65,7 +63,7 @@ open class NavigationHideScrollBehavior : ScrollingTriggerBehavior {
             }
         }
     }
-    
+
     // MARK: Private methods
     var navController: UINavigationController?
     func findNavigationController() -> UINavigationController? {
@@ -82,7 +80,7 @@ open class NavigationHideScrollBehavior : ScrollingTriggerBehavior {
         }
         return nil
     }
-    
+
     var tabController: UITabBarController?
     func findTabBarController() -> UITabBarController? {
         guard tabController == nil else { return tabController }

@@ -9,11 +9,10 @@
 import Foundation
 import UIKit
 
-open class ViewPositionKeyboardBehavior : KeyboardTriggerBehavior {
-    
+open class ViewPositionKeyboardBehavior: KeyboardTriggerBehavior {
+
     @IBOutlet open weak var view: UIView!
-    
-    
+
     @IBAction open func moveViewAboveKeyboard() {
         if isEnabled {
             if let viewFrameInWindow = view.window?.convert(view.bounds, from:view) {
@@ -27,7 +26,7 @@ open class ViewPositionKeyboardBehavior : KeyboardTriggerBehavior {
             }
         }
     }
-    
+
     @IBAction open func resetViewPosition() {
         if isEnabled {
             let options = UIViewAnimationOptions.beginFromCurrentState.union(keyboardAnimationCurve.toOptions())
@@ -36,13 +35,13 @@ open class ViewPositionKeyboardBehavior : KeyboardTriggerBehavior {
                 }, completion: nil)
         }
     }
-    
+
     // MARK: Overwritten methods
     override func keyboardWillChange(_ notification: Notification) {
         super.keyboardWillChange(notification)
         moveViewAboveKeyboard()
     }
-    
+
     override func keyboardWillHide(_ notification: Notification) {
         super.keyboardWillHide(notification)
         resetViewPosition()
