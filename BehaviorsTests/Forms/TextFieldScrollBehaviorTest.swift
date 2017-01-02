@@ -126,7 +126,7 @@ class TextFieldScrollBehaviorTest: XCTestCase {
     }
 }
 
-//MARK: Mock objects
+// MARK: Mock objects
 class MockTextField : UITextField {
     var firstResponder = false
     override func isFirstResponder() -> Bool {

@@ -9,23 +9,23 @@
 import Foundation
 import UIKit
 
-public class KeyboardTriggerBehavior : Behavior {
-    var keyboardFrame = CGRectZero
-    var keyboardAnimationDuration:NSTimeInterval = 0.25
-    var keyboardAnimationCurve = UIViewAnimationCurve.EaseOut
-    var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
+open class KeyboardTriggerBehavior : Behavior {
+    var keyboardFrame = CGRect.zero
+    var keyboardAnimationDuration:TimeInterval = 0.25
+    var keyboardAnimationCurve = UIViewAnimationCurve.easeOut
+    var notificationCenter: NotificationCenter = NotificationCenter.default
     
     
-    //MARK: Lifecycle methods
-    convenience init(notificationCenter nc: NSNotificationCenter) {
-        self.init(frame: CGRectZero, notificationCenter: nc)
+    // MARK: Lifecycle methods
+    convenience init(notificationCenter nc: NotificationCenter) {
+        self.init(frame: CGRect.zero, notificationCenter: nc)
     }
     
     override convenience init(frame: CGRect) {
-        self.init(frame: frame, notificationCenter: NSNotificationCenter.defaultCenter())
+        self.init(frame: frame, notificationCenter: NotificationCenter.default)
     }
     
-    init(frame: CGRect, notificationCenter nc: NSNotificationCenter) {
+    init(frame: CGRect, notificationCenter nc: NotificationCenter) {
         notificationCenter = nc
         super.init(frame: frame)
         registerNotifications()
@@ -40,49 +40,49 @@ public class KeyboardTriggerBehavior : Behavior {
     }
     
     
-    //MARK: Notification and Listener methods
-    @objc func keyboardWillShow(notification: NSNotification) {
+    // MARK: Notification and Listener methods
+    @objc func keyboardWillShow(_ notification: Notification) {
         readNotificationInformation(notification)
-        self.sendActionsForControlEvents(UIControlEvents.EditingDidBegin)
+        self.sendActions(for: UIControlEvents.editingDidBegin)
     }
     
-    @objc func keyboardWillChange(notification: NSNotification) {
+    @objc func keyboardWillChange(_ notification: Notification) {
         readNotificationInformation(notification)
-        self.sendActionsForControlEvents(UIControlEvents.EditingChanged)
+        self.sendActions(for: UIControlEvents.editingChanged)
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         readNotificationInformation(notification)
-        self.sendActionsForControlEvents(UIControlEvents.EditingDidEnd)
+        self.sendActions(for: UIControlEvents.editingDidEnd)
     }
     
-    //MARK: Internal methods
-    private func registerNotifications() {
+    // MARK: Internal methods
+    fileprivate func registerNotifications() {
         notificationCenter.addObserver(
             self,
             selector: #selector(KeyboardTriggerBehavior.keyboardWillShow(_:)),
-            name: UIKeyboardWillShowNotification,
+            name: NSNotification.Name.UIKeyboardWillShow,
             object: nil)
         notificationCenter.addObserver(
             self,
             selector: #selector(KeyboardTriggerBehavior.keyboardWillChange(_:)),
-            name: UIKeyboardWillChangeFrameNotification,
+            name: NSNotification.Name.UIKeyboardWillChangeFrame,
             object: nil)
         notificationCenter.addObserver(
             self,
             selector: #selector(KeyboardTriggerBehavior.keyboardWillHide(_:)),
-            name: UIKeyboardWillHideNotification,
+            name: NSNotification.Name.UIKeyboardWillHide,
             object: nil)
     }
     
-    private func unregisterNotifications() {
+    fileprivate func unregisterNotifications() {
         notificationCenter.removeObserver(self)
     }
     
-    private func readNotificationInformation(notification: NSNotification) {
+    fileprivate func readNotificationInformation(_ notification: Notification) {
         if  let userInfo = notification.userInfo {
             if let keyboardFrameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-                keyboardFrame = keyboardFrameValue.CGRectValue()
+                keyboardFrame = keyboardFrameValue.cgRectValue
             }
             
             if let keyboardAnimDurationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
@@ -90,7 +90,7 @@ public class KeyboardTriggerBehavior : Behavior {
             }
             
             if let keyboardAnimationCurveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
-                keyboardAnimationCurve = UIViewAnimationCurve(rawValue: keyboardAnimationCurveValue.integerValue)!
+                keyboardAnimationCurve = UIViewAnimationCurve(rawValue: keyboardAnimationCurveValue.intValue)!
             }
         }
     }

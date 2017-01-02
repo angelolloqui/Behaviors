@@ -9,52 +9,52 @@
 import Foundation
 import UIKit
 
-public class TextFieldScrollBehavior : KeyboardTriggerBehavior {
-    @IBOutlet public var textFields: [UITextField]?
-    @IBOutlet public weak var scrollView: UIScrollView?
-    @IBInspectable public var insetEnabled: Bool = true
-    @IBInspectable public var offsetEnabled: Bool = true
-    @IBInspectable public var bottomMargin: CGFloat = 5
+open class TextFieldScrollBehavior : KeyboardTriggerBehavior {
+    @IBOutlet open var textFields: [UITextField]?
+    @IBOutlet open weak var scrollView: UIScrollView?
+    @IBInspectable open var insetEnabled: Bool = true
+    @IBInspectable open var offsetEnabled: Bool = true
+    @IBInspectable open var bottomMargin: CGFloat = 5
     
-    var appliedInsetSize = CGSizeZero
+    var appliedInsetSize = CGSize.zero
     
     
-    //MARK: Public methods
-    @IBAction public func autoScroll(animated: Bool = true)  {
+    // MARK: Public methods
+    @IBAction open func autoScroll(_ animated: Bool = true)  {
         if let textField = responderTextField() {
             self.configureScrollInsets(keyboardFrame.size, animated: animated)
             self.configureScrollOffset(textField, animated: animated)
         }
         else {
-            self.configureScrollInsets(CGSizeZero, animated: animated)
+            self.configureScrollInsets(CGSize.zero, animated: animated)
         }
     }
     
     
-    //MARK: Notification and Listener methods
-    @objc private func editingDidBegin(textfield: UITextField) {
+    // MARK: Notification and Listener methods
+    @objc fileprivate func editingDidBegin(_ textfield: UITextField) {
         self.autoScroll(true)
     }
     
-    @objc private func editingDidEnd(textfield: UITextField) {
+    @objc fileprivate func editingDidEnd(_ textfield: UITextField) {
         self.autoScroll(true)
     }
     
-    //MARK: Overwritten methods
-    @objc override func keyboardWillChange(notification: NSNotification) {
+    // MARK: Overwritten methods
+    @objc override func keyboardWillChange(_ notification: Notification) {
         super.keyboardWillChange(notification)
         self.autoScroll(true)
     }
     
-    @objc override func keyboardWillHide(notification: NSNotification) {
+    @objc override func keyboardWillHide(_ notification: Notification) {
         super.keyboardWillHide(notification)
-        self.configureScrollInsets(CGSizeZero, animated: true)
+        self.configureScrollInsets(CGSize.zero, animated: true)
     }
     
-    //MARK: Internal methods
+    // MARK: Internal methods
     
-    private func configureScrollInsets(size: CGSize, animated: Bool = true) {
-        if enabled && insetEnabled && scrollView != nil {
+    fileprivate func configureScrollInsets(_ size: CGSize, animated: Bool = true) {
+        if isEnabled && insetEnabled && scrollView != nil {
             let scrollView = self.scrollView!
             let deltaY = size.height - appliedInsetSize.height
             if deltaY != 0 {
@@ -63,8 +63,8 @@ public class TextFieldScrollBehavior : KeyboardTriggerBehavior {
                 contentInsets.bottom += deltaY
                 scrollInsets.bottom += deltaY
                 if animated {
-                    let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
-                    UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
+                    let options = UIViewAnimationOptions.beginFromCurrentState.union(keyboardAnimationCurve.toOptions())
+                    UIView.animate(withDuration: keyboardAnimationDuration, delay: 0, options: options, animations: {
                         scrollView.contentInset = contentInsets
                         scrollView.scrollIndicatorInsets = scrollInsets
                         }, completion: nil)
@@ -78,17 +78,17 @@ public class TextFieldScrollBehavior : KeyboardTriggerBehavior {
         }
     }
     
-    private func configureScrollOffset(textField: UITextField, animated: Bool = true) {
-        if enabled && offsetEnabled {
+    fileprivate func configureScrollOffset(_ textField: UITextField, animated: Bool = true) {
+        if isEnabled && offsetEnabled {
             if  let scrollView = self.scrollView,
-                let frameInWindow = scrollView.window?.convertRect(textField.bounds, fromView: textField) {
-                    let yBelowKeyboard = CGRectGetMaxY(frameInWindow) - keyboardFrame.origin.y + bottomMargin
+                let frameInWindow = scrollView.window?.convert(textField.bounds, from: textField) {
+                    let yBelowKeyboard = frameInWindow.maxY - keyboardFrame.origin.y + bottomMargin
                     if yBelowKeyboard > 0 {
                         var bounds = scrollView.bounds
                         bounds.origin.y += yBelowKeyboard
                         if (animated) {
-                            let options = UIViewAnimationOptions.BeginFromCurrentState.union(keyboardAnimationCurve.toOptions())
-                            UIView.animateWithDuration(keyboardAnimationDuration, delay: 0, options: options, animations: {
+                            let options = UIViewAnimationOptions.beginFromCurrentState.union(keyboardAnimationCurve.toOptions())
+                            UIView.animate(withDuration: keyboardAnimationDuration, delay: 0, options: options, animations: {
                                 scrollView.bounds = bounds
                                 }, completion: nil)
                         }
@@ -100,14 +100,14 @@ public class TextFieldScrollBehavior : KeyboardTriggerBehavior {
         }
     }
     
-    private func responderTextField() -> UITextField? {
-        return textFields?.filter { return $0.isFirstResponder() }.first
+    fileprivate func responderTextField() -> UITextField? {
+        return textFields?.filter { return $0.isFirstResponder }.first
     }
     
 }
 
 extension UIViewAnimationCurve {
-    private func toOptions() -> UIViewAnimationOptions {
+    fileprivate func toOptions() -> UIViewAnimationOptions {
         return UIViewAnimationOptions(rawValue: UInt(rawValue << 16))
     }
 }

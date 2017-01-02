@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class TextFieldValidatorBehavior : Behavior {
+open class TextFieldValidatorBehavior : Behavior {
     @IBInspectable var validateOnChange: Bool = true
     @IBInspectable var allowsEmpty: Bool = true
     @IBInspectable var message: String?
@@ -17,22 +17,22 @@ public class TextFieldValidatorBehavior : Behavior {
         willSet {
             textField?.removeTarget(self, action:
                 #selector(TextFieldValidatorBehavior.textFieldShouldReturn),
-                                    forControlEvents: .EditingDidEndOnExit
+                                    for: .editingDidEndOnExit
             )
             textField?.removeTarget(self, action:
                 #selector(TextFieldValidatorBehavior.textFieldDidChange),
-                                    forControlEvents: .EditingChanged
+                                    for: .editingChanged
             )
         }
         
         didSet {
             textField.addTarget(self, action:
                 #selector(TextFieldValidatorBehavior.textFieldShouldReturn),
-                                forControlEvents: .EditingDidEndOnExit
+                                for: .editingDidEndOnExit
             )
             textField.addTarget(self, action:
                 #selector(TextFieldValidatorBehavior.textFieldDidChange),
-                                forControlEvents: .EditingChanged
+                                for: .editingChanged
             )
         }
     }
@@ -50,7 +50,7 @@ public class TextFieldValidatorBehavior : Behavior {
         else {
             isValid = true
         }
-        self.sendActionsForControlEvents(UIControlEvents.ValueChanged)
+        self.sendActions(for: UIControlEvents.valueChanged)
     }
     
     func textFieldShouldReturn() {
@@ -60,7 +60,7 @@ public class TextFieldValidatorBehavior : Behavior {
         }
         else {
             //Retake the first responder to continue editing
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.textField.becomeFirstResponder()
             }
         }
@@ -72,14 +72,14 @@ public class TextFieldValidatorBehavior : Behavior {
         }
     }
     
-    func matchesRegularExpression(regex: String) -> Bool {
-        guard let text = textField.text, let expression = try? NSRegularExpression(pattern: regex, options: NSRegularExpressionOptions.CaseInsensitive) else { return false }
-        let matchRange = expression.rangeOfFirstMatchInString(text, options: NSMatchingOptions.ReportCompletion, range: NSMakeRange(0, text.characters.count))
+    func matchesRegularExpression(_ regex: String) -> Bool {
+        guard let text = textField.text, let expression = try? NSRegularExpression(pattern: regex, options: NSRegularExpression.Options.caseInsensitive) else { return false }
+        let matchRange = expression.rangeOfFirstMatch(in: text, options: NSRegularExpression.MatchingOptions.reportCompletion, range: NSMakeRange(0, text.characters.count))
         return matchRange.location != NSNotFound && matchRange.length == text.characters.count
     }
 }
 
-public class TextFieldRegexValidatorBehavior : TextFieldValidatorBehavior {
+open class TextFieldRegexValidatorBehavior : TextFieldValidatorBehavior {
     @IBInspectable var regex: String? {
         didSet {
             regularExpression = regex
@@ -88,29 +88,29 @@ public class TextFieldRegexValidatorBehavior : TextFieldValidatorBehavior {
 }
 
 
-public class TextFieldEmailValidatorBehavior : TextFieldValidatorBehavior {
-    public override func awakeFromNib() {
+open class TextFieldEmailValidatorBehavior : TextFieldValidatorBehavior {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         regularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
     }
 }
 
 
-public class TextFieldPhoneValidatorBehavior : TextFieldValidatorBehavior {
-    public override func awakeFromNib() {
+open class TextFieldPhoneValidatorBehavior : TextFieldValidatorBehavior {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         regularExpression = "[0-9+-]{8,13}"
     }
 }
 
-public class TextFieldCreditCardExiprationValidatorBehavior: TextFieldValidatorBehavior {
+open class TextFieldCreditCardExiprationValidatorBehavior: TextFieldValidatorBehavior {
     
     var isExpired: Bool {
-        if let expiration = self.textField.text where self.textField.text?.characters.count == 5 {
-            let dateFormatter = NSDateFormatter()
+        if let expiration = self.textField.text, self.textField.text?.characters.count == 5 {
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/yy"
-            let date = dateFormatter.dateFromString(expiration)
-            return date?.compare(NSDate()) == .OrderedAscending
+            let date = dateFormatter.date(from: expiration)
+            return date?.compare(Date()) == .orderedAscending
         }
         return true
     }
@@ -122,13 +122,13 @@ public class TextFieldCreditCardExiprationValidatorBehavior: TextFieldValidatorB
         set(valid) { super.isValid = valid }
     }
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         regularExpression = "^(0[1-9]|1[0-2])\\/?([0-9]{4}|[0-9]{2})$"
     }
 }
 
-public class TextFieldCreditCardValidatorBehavior : TextFieldValidatorBehavior {
+open class TextFieldCreditCardValidatorBehavior : TextFieldValidatorBehavior {
     @IBInspectable var visa: Bool = true
     @IBInspectable var masterCard: Bool = true
     @IBInspectable var americanExpress: Bool = true
@@ -157,7 +157,7 @@ public class TextFieldCreditCardValidatorBehavior : TextFieldValidatorBehavior {
         return matchesRegularExpression(TextFieldCreditCardValidatorBehavior.DiscoverRegex)
     }
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         
         var expressions:[String] = []
@@ -176,7 +176,7 @@ public class TextFieldCreditCardValidatorBehavior : TextFieldValidatorBehavior {
         if discover {
             expressions.append(TextFieldCreditCardValidatorBehavior.DiscoverRegex)
         }
-        regularExpression = expressions.map { "(\($0))" }.joinWithSeparator("|")
+        regularExpression = expressions.map { "(\($0))" }.joined(separator: "|")
     }
     
 }

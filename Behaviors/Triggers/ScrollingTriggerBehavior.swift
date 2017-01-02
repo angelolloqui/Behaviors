@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-public class ScrollingTriggerBehavior : Behavior {
-    @IBInspectable public var minimumOffset: CGFloat = 64.0
-    @IBInspectable public var enterScrollDownOffset: CGFloat = 100.0
-    @IBInspectable public var exitScrollUpOffset: CGFloat = 300.0
+open class ScrollingTriggerBehavior : Behavior {
+    @IBInspectable open var minimumOffset: CGFloat = 64.0
+    @IBInspectable open var enterScrollDownOffset: CGFloat = 100.0
+    @IBInspectable open var exitScrollUpOffset: CGFloat = 300.0
     
     var active: Bool = false
     
@@ -22,40 +22,40 @@ public class ScrollingTriggerBehavior : Behavior {
         }
         
         didSet {
-            scrollView?.addObserver(self, forKeyPath: "contentOffset", options: [.New, .Old], context: nil)
+            scrollView?.addObserver(self, forKeyPath: "contentOffset", options: [.new, .old], context: nil)
         }
     }
-    var lastChangePoint = CGPointZero
+    var lastChangePoint = CGPoint.zero
     
     deinit {
         scrollView?.removeObserver(self, forKeyPath: "contentOffset")
     }
     
-    @IBAction public func touchDragEnter() {
+    @IBAction open func touchDragEnter() {
         if let offset = scrollView?.contentOffset {
             lastChangePoint = offset
         }
-        self.sendActionsForControlEvents(UIControlEvents.TouchDragEnter)
+        self.sendActions(for: UIControlEvents.touchDragEnter)
         active = true
     }
     
-    @IBAction public func touchDragExit() {
+    @IBAction open func touchDragExit() {
         if let offset = scrollView?.contentOffset {
             lastChangePoint = offset
         }
-        self.sendActionsForControlEvents(UIControlEvents.TouchDragExit)
+        self.sendActions(for: UIControlEvents.touchDragExit)
         active = false
     }
     
-    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if self.enabled {
-            if let keyPath = keyPath where keyPath == "contentOffset",
-                let scrollView = object as? UIScrollView where scrollView == self.scrollView,
-                let newOffset = change?[NSKeyValueChangeNewKey] as? NSValue,
-                let oldOffset = change?[NSKeyValueChangeOldKey] as? NSValue {
+    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if self.isEnabled {
+            if let keyPath = keyPath, keyPath == "contentOffset",
+                let scrollView = object as? UIScrollView, scrollView == self.scrollView,
+                let newOffset = change?[NSKeyValueChangeKey.newKey] as? NSValue,
+                let oldOffset = change?[NSKeyValueChangeKey.oldKey] as? NSValue {
                     
-                    let newPoint = newOffset.CGPointValue()
-                    let oldPoint = oldOffset.CGPointValue()
+                    let newPoint = newOffset.cgPointValue
+                    let oldPoint = oldOffset.cgPointValue
                     let deltaY = newPoint.y - lastChangePoint.y
                     
                     if newPoint.y > oldPoint.y {

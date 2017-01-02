@@ -8,8 +8,8 @@
 
 import Foundation
 
-//MARK: Mock objects
-class MockNotificationCenter : NSNotificationCenter {
+// MARK: Mock objects
+class MockNotificationCenter : NotificationCenter {
     struct ObserverInfo : Equatable {
         weak var observer: AnyObject?
         let selector: Selector
@@ -18,15 +18,15 @@ class MockNotificationCenter : NSNotificationCenter {
     
     var observers = [ObserverInfo]()
     
-    override func addObserver(observer: AnyObject, selector aSelector: Selector, name aName: String?, object anObject: AnyObject?) {
-        let observerInfo = ObserverInfo(observer: observer, selector: aSelector, name: aName!)
+    override func addObserver(_ observer: Any, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: Any?) {
+        let observerInfo = ObserverInfo(observer: observer as AnyObject?, selector: aSelector, name: aName!.rawValue)
         observers.append(observerInfo)
         super.addObserver(observer, selector: aSelector, name: aName, object: anObject)
     }
     
-    override func removeObserver(observer: AnyObject, name aName: String?, object anObject: AnyObject?) {
+    override func removeObserver(_ observer: Any, name aName: NSNotification.Name?, object anObject: Any?) {
         observers = observers.filter({ (elem) -> Bool in
-            (aName != nil && elem.name != aName) || (elem.observer != nil && elem.observer !== observer)
+            (aName != nil && elem.name != String(describing: aName)) || (elem.observer != nil && elem.observer! !== (observer as AnyObject))
         })
         super.removeObserver(observer, name: aName, object: anObject)
     }

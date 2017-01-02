@@ -11,7 +11,7 @@ import ObjectiveC
 import UIKit
 
 @objc
-public class Behavior : UIControl {
+open class Behavior : UIControl {
     @IBOutlet weak var owner: AnyObject? {
         willSet (new) {
             if let new: AnyObject = new {
@@ -23,18 +23,20 @@ public class Behavior : UIControl {
         }
     }
     
-    private func bindLifetimeToObject(object: AnyObject) {
-        let pointer = unsafeAddressOf(self)
+    fileprivate func bindLifetimeToObject(_ object: AnyObject) {
+        let pointer = Unmanaged.passUnretained(self).toOpaque()
         objc_setAssociatedObject(object, pointer, self, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 
-    private func releaseLifetimeFromObject(object: AnyObject) {
-        let pointer = unsafeAddressOf(self)
+    fileprivate func releaseLifetimeFromObject(_ object: AnyObject) {
+        let pointer = Unmanaged.passUnretained(self).toOpaque()
         objc_setAssociatedObject(object, pointer, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
     
-    public override func nextResponder() -> UIResponder? {
-        return super.nextResponder() ?? self.owner as? UIResponder
+    override open var next: UIResponder? {
+        get {
+            return super.next ?? self.owner as? UIResponder
+        }
     }
 }
 

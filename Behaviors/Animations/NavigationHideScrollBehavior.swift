@@ -9,68 +9,68 @@
 import Foundation
 import UIKit
 
-public class NavigationHideScrollBehavior : ScrollingTriggerBehavior {
-    @IBInspectable public var navigationBarEnabled: Bool = true
-    @IBInspectable public var tabBarEnabled: Bool = false
+open class NavigationHideScrollBehavior : ScrollingTriggerBehavior {
+    @IBInspectable open var navigationBarEnabled: Bool = true
+    @IBInspectable open var tabBarEnabled: Bool = false
 
-    //MARK: Public actions
-    @IBAction public override func touchDragEnter() {
+    // MARK: Public actions
+    @IBAction open override func touchDragEnter() {
         super.touchDragEnter()
         hideNavigationBar()
         hideTabBar()
     }
     
-    @IBAction public override func touchDragExit() {
+    @IBAction open override func touchDragExit() {
         super.touchDragExit()
         showNavigationBar()
         showTabBar()
     }
     
-    @IBAction public func hideNavigationBar() {
+    @IBAction open func hideNavigationBar() {
         setNavigationBarHidden(true, animated: true)
     }
     
-    @IBAction public func showNavigationBar() {
+    @IBAction open func showNavigationBar() {
         setNavigationBarHidden(false, animated: true)
     }
     
-    @IBAction public func hideTabBar() {
+    @IBAction open func hideTabBar() {
         setTabBarHidden(true, animated: true)
     }
     
-    @IBAction public func showTabBar() {
+    @IBAction open func showTabBar() {
         setTabBarHidden(false, animated: true)
     }
     
     
-    public func setNavigationBarHidden(hidden: Bool, animated: Bool = true) {
-        if enabled && navigationBarEnabled {
+    open func setNavigationBarHidden(_ hidden: Bool, animated: Bool = true) {
+        if isEnabled && navigationBarEnabled {
             if let navController = findNavigationController() {
-                if navController.navigationBarHidden != hidden {
+                if navController.isNavigationBarHidden != hidden {
                     navController.setNavigationBarHidden(hidden, animated: animated)
-                    self.sendActionsForControlEvents(.ValueChanged)
+                    self.sendActions(for: .valueChanged)
                 }
             }
         }
     }
     
     
-    public func setTabBarHidden(hidden: Bool, animated: Bool = true) {
-        if enabled && tabBarEnabled {
+    open func setTabBarHidden(_ hidden: Bool, animated: Bool = true) {
+        if isEnabled && tabBarEnabled {
             if let tabController = findTabBarController() {
-                if tabController.tabBar.hidden != hidden {
-                    tabController.tabBar.hidden = hidden
-                    self.sendActionsForControlEvents(.ValueChanged)
+                if tabController.tabBar.isHidden != hidden {
+                    tabController.tabBar.isHidden = hidden
+                    self.sendActions(for: .valueChanged)
                 }
             }
         }
     }
     
-    //MARK: Private methods
+    // MARK: Private methods
     var navController: UINavigationController?
     func findNavigationController() -> UINavigationController? {
         guard navController == nil else { return navController }
-        var responder = scrollView?.nextResponder()
+        var responder = scrollView?.next
         while responder != nil {
             if let vc = responder as? UIViewController {
                 if vc.navigationController != nil {
@@ -78,7 +78,7 @@ public class NavigationHideScrollBehavior : ScrollingTriggerBehavior {
                     return vc.navigationController
                 }
             }
-            responder = responder?.nextResponder()
+            responder = responder?.next
         }
         return nil
     }
@@ -86,7 +86,7 @@ public class NavigationHideScrollBehavior : ScrollingTriggerBehavior {
     var tabController: UITabBarController?
     func findTabBarController() -> UITabBarController? {
         guard tabController == nil else { return tabController }
-        var responder = scrollView?.nextResponder()
+        var responder = scrollView?.next
         while responder != nil {
             if let vc = responder as? UIViewController {
                 if vc.tabBarController != nil {
@@ -94,7 +94,7 @@ public class NavigationHideScrollBehavior : ScrollingTriggerBehavior {
                     return vc.tabBarController
                 }
             }
-            responder = responder?.nextResponder()
+            responder = responder?.next
         }
         return nil
     }
